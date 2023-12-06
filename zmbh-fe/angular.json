@@ -3,11 +3,18 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "zmbh-portfolio": {
+    "zmbh-fe": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
         }
       },
       "root": "",
@@ -17,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/zmbh-portfolio",
+            "outputPath": "dist/zmbh-fe",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -30,9 +37,14 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -67,10 +79,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "zmbh-portfolio:build:production"
+              "buildTarget": "zmbh-fe:build:production"
             },
             "development": {
-              "buildTarget": "zmbh-portfolio:build:development"
+              "buildTarget": "zmbh-fe:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "zmbh-portfolio:build"
+            "buildTarget": "zmbh-fe:build"
           }
         },
         "test": {
@@ -104,6 +116,6 @@
     }
   },
   "cli": {
-    "analytics": "9a75fb65-6c11-47c0-b2d1-c46f26b98e69"
+    "analytics": "5c971b57-4392-45a3-a834-401993b0169b"
   }
 }
