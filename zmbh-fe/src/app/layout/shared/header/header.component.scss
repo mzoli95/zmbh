@@ -1,0 +1,28 @@
+body {
+  padding-top: 260px; /* Fixed navbar height */
+}
+
+.navbar {
+  height: 200px;
+  background-color: #DDFFE7; /* Mint */
+}
+
+.navbar-brand {
+  color: #167D7F; /* Teal Green */
+}
+
+.navbar-toggler {
+  order: -1; /* Push toggler to the left when collapsed */
+}
+
+.navbar-toggler-icon {
+  background-color: #29A0B1; /* Teal */
+}
+
+.navbar-nav .nav-link {
+  color: #167D7F; /* Teal Green */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #29A0B1; /* Teal */
+}
