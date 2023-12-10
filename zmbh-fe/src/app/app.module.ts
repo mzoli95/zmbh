@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/shared/header/header.component';
 import { ButtonModule } from 'primeng/button';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomeComponent } from './layout/zmbh-portfolio/home/home.component';
+import { AboutComponent } from './layout/zmbh-portfolio/about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

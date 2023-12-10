@@ -1,16 +1,9 @@
-$color1: #E0EDF3;
-$color2: #B1D9D9;
-$color3: #79BFB7;
-$color4: #53A69E;
-$color5: #2B8C7B;
 
-body {
-  padding-top: 190px;
-}
+@import '../../../../styles.scss';
 
 .navbar {
   background-color: $color5;
-  height: 190px;
+  height: 150px;
   padding: 0 5rem;
   font-weight: bold;
 
@@ -68,6 +61,6 @@ body {
 }
 
 h1{
-  font-size:48px !important;
+  font-size:36px !important;
   color:  $color1 !important;
 }
