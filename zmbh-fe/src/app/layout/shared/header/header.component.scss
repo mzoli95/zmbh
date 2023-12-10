@@ -1,28 +1,73 @@
+$color1: #E0EDF3;
+$color2: #B1D9D9;
+$color3: #79BFB7;
+$color4: #53A69E;
+$color5: #2B8C7B;
+
 body {
-  padding-top: 260px; /* Fixed navbar height */
+  padding-top: 190px;
 }
 
 .navbar {
-  height: 200px;
-  background-color: #DDFFE7; /* Mint */
+  background-color: $color5;
+  height: 190px;
+  padding: 0 5rem;
+  font-weight: bold;
+
+}
+
+.navbar-header {
+  display: flex;
+  font-weight: bold;
+
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .navbar .navbar-header {
+    flex-direction: column;
+  }
+
+  .navbar .navbar-toggler {
+    order: 1;
+    margin-top: 10px;
+    background-color: $color2;
+    opacity: 0.5;
+    font-weight: bold;
+  }
+
+  .navbar .navbar-collapse {
+    background-color: $color4; 
+
+    border-style: solid;
+    border-color: $color3;
+
+    text-align: center;
+    font-weight: bold;
+    color:white !important;
+
+  }
 }
 
 .navbar-brand {
-  color: #167D7F; /* Teal Green */
-}
+  font-size: 28px;
+  color: $color1;
+  font-weight: bold;
 
-.navbar-toggler {
-  order: -1; /* Push toggler to the left when collapsed */
-}
-
-.navbar-toggler-icon {
-  background-color: #29A0B1; /* Teal */
 }
 
 .navbar-nav .nav-link {
-  color: #167D7F; /* Teal Green */
+  color: $color1;
+  font-weight: bold;
+
+  &:hover {
+      color: $color3;
+  }
 }
 
-.navbar-nav .nav-link:hover {
-  color: #29A0B1; /* Teal */
+h1{
+  font-size:48px !important;
+  color:  $color1 !important;
 }
