@@ -19,8 +19,18 @@
 
 @media (max-width: 992px) {
   .navbar .navbar-header {
-    flex-direction: column;
-  }
+    flex-direction: row; 
+    justify-content: space-between;
+    flex-wrap: wrap;
+    }
+
+    
+.navbar {
+  background-color: $color5;
+  height: 220px;
+  padding: 0 5rem;
+  font-weight: bold; 
+}
 
   .navbar .navbar-toggler {
     order: 1;
