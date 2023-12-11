@@ -8,3 +8,9 @@
 .content{
   min-height: calc(100vh - 215px);
 }
+@media (max-width: 992px) {
+
+  .content{
+    min-height: calc(100vh - 285px);
+  }
+}
