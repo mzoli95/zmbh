@@ -2,8 +2,13 @@
 
 .row {
   color: $color5;
-  background-color: $color1;
   width: 100%;
+  padding-top: 10px;
+}
+.big-container {
+  background-color: $color1;
+  padding: 20px;
+  text-overflow: initial;
 }
 .content{
   min-height: calc(100vh - 215px);
