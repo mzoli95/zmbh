@@ -12,10 +12,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './layout/zmbh-portfolio/home/home.component';
 import { AboutComponent } from './layout/zmbh-portfolio/about/about.component';
 import { FooterComponent } from './layout/shared/footer/footer.component';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, HomeComponent, AboutComponent, FooterComponent],
-  imports: [BrowserModule, AppRoutingModule, ButtonModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, ButtonModule, NgbModule,CardModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })
