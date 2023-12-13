@@ -1,36 +1,34 @@
 @import "../../../../styles.scss";
-.content{
-    min-height: calc(100vh - 215px);
+.content {
+  min-height: calc(100vh - 215px);
+}
+
+@media (max-width: 992px) {
+  .content {
+    min-height: calc(100vh - 285px);
   }
+  .secondary-content {
+    max-width: 100% !important;
+    margin: auto !important;
+  }
+  .primary-content {
+    max-width: 100% !important;
+    margin: auto !important;
+  }
+}
 
-  @media (max-width: 992px) {
-
-      .content{
-        min-height: calc(100vh - 285px);
-      }
-      .secondary-content{
-        max-width: 100% !important;
-        margin:auto !important;
-      }
-      .primary-content{
-        max-width: 100% !important;
-        margin:auto !important;
-      }
-    }
-
-
-    .card-custom {
-        margin-bottom: 20px; /* Térköz a kártyák között */
-        width: 100%; /* Egyenletes szélesség */
-    }
-    .primary-content{
-      max-width: 40%;
-      margin-right:0;
-
-    }
-    .secondary-content{
-      max-width: 60%; margin-left: 0;
-    }
-.secondary-background-color{
-  background-color:$color2;
+.card-custom {
+  margin-bottom: 20px; /* Térköz a kártyák között */
+  width: 100%; /* Egyenletes szélesség */
+}
+.primary-content {
+  max-width: 40%;
+  margin-right: 0;
+}
+.secondary-content {
+  max-width: 60%;
+  margin-left: 0;
+}
+.secondary-background-color {
+  background-color: $color2;
 }

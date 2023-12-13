@@ -10,12 +10,11 @@
   padding: 20px;
   text-overflow: initial;
 }
-.content{
+.content {
   min-height: calc(100vh - 215px);
 }
 @media (max-width: 992px) {
-
-  .content{
+  .content {
     min-height: calc(100vh - 285px);
   }
 }

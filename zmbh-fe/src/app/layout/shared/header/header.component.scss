@@ -1,11 +1,10 @@
-
-@import '../../../../styles.scss';
+@import "../../../../styles.scss";
 
 .navbar {
   background-color: $color5;
   height: 150px;
   padding: 0 5rem;
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 .navbar-header {
@@ -19,17 +18,17 @@
 
 @media (max-width: 992px) {
   .navbar .navbar-header {
-    flex-direction: row; 
+    flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    }
+  }
 
-.navbar {
-  background-color: $color5;
-  height: 220px;
-  padding: 0 5rem;
-  font-weight: bold; 
-}
+  .navbar {
+    background-color: $color5;
+    height: 220px;
+    padding: 0 5rem;
+    font-weight: bold;
+  }
 
   .navbar .navbar-toggler {
     order: 1;
@@ -40,15 +39,14 @@
   }
 
   .navbar .navbar-collapse {
-    background-color: $color4; 
+    background-color: $color4;
 
     border-style: solid;
     border-color: $color3;
 
     text-align: center;
     font-weight: bold;
-    color:white !important;
-
+    color: white !important;
   }
 }
 
@@ -56,7 +54,6 @@
   font-size: 28px;
   color: $color1;
   font-weight: bold;
-
 }
 
 .navbar-nav .nav-link {
@@ -64,11 +61,11 @@
   font-weight: bold;
 
   &:hover {
-      color: $color3;
+    color: $color3;
   }
 }
 
-h1{
-  font-size:36px !important;
-  color:  $color1 !important;
+h1 {
+  font-size: 36px !important;
+  color: $color1 !important;
 }
