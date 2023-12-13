@@ -7,3 +7,17 @@ $color5: #2b8c7b;
 body {
   background-color: $color1;
 }
+.notification-service {
+  .mdc-snackbar__surface {
+    background-color: $color5 !important;
+    color: white !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .notification-service {
+    .mdc-snackbar__surface {
+      width: 50% !important;
+    }
+  }
+}

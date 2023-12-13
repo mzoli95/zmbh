@@ -8,28 +8,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/shared/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HomeComponent } from './layout/zmbh-portfolio/home/home.component';
-import { AboutComponent } from './layout/zmbh-portfolio/about/about.component';
 import { FooterComponent } from './layout/shared/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card';
+import { ZmbhModule } from './layout/zmbh-portfolio/zmbh.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NotificationService } from './layout/shared/notification/notification.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent,
-    AboutComponent,
-    FooterComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    MatCardModule,
     BrowserAnimationsModule,
+    MatProgressSpinnerModule,
+    ZmbhModule,
+    MatSnackBarModule,
   ],
-  providers: [provideClientHydration()],
+  providers: [provideClientHydration(), NotificationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
