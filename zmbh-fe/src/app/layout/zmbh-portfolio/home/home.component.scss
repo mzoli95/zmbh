@@ -20,20 +20,24 @@
   display: flex;
 }
 
-.card-custom {
-  margin-bottom: 20px; /* Térköz a kártyák között */
-  width: 100%; /* Egyenletes szélesség */
-  display: flex;
-}
-
 .primary-content {
-  max-width: 60%;
-  margin-left: 0;
+  max-width: 40%;
+  margin-left: 5rem;
 }
 .secondary-content {
   max-width: 40%;
-  margin-right: 0;
+  margin-right: 5rem;
 }
 .primary-background-color {
   background-color: $color2;
+}
+
+.services-card {
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: #e0edf3;
+  height: 150px;
+  mat-card-header {
+    margin-bottom: 10px;
+  }
 }
