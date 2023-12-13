@@ -27,13 +27,13 @@
 }
 
 .primary-content {
-  max-width: 40%;
-  margin-right: 0;
-}
-.secondary-content {
   max-width: 60%;
   margin-left: 0;
 }
-.secondary-background-color {
+.secondary-content {
+  max-width: 40%;
+  margin-right: 0;
+}
+.primary-background-color {
   background-color: $color2;
 }
