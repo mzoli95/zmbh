@@ -1,20 +1,62 @@
 @import "../../../../styles.scss";
 
 .row {
-  color: $color5;
+  color: black;
   width: 100%;
   padding-top: 10px;
 }
-.big-container {
-  background-color: $color1;
-  padding: 20px;
-  text-overflow: initial;
-}
 .content {
   min-height: calc(100vh - 215px);
+  background-color: $color2;
+  padding: 20px;
+  text-overflow: initial;
 }
 @media (max-width: 992px) {
   .content {
     min-height: calc(100vh - 285px);
   }
+}
+.container {
+  background-color: $color1;
+  color: black;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+h1 {
+  font-size: 40px;
+  color: black;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 30px;
+  color: black;
+  font-weight: bold;
+}
+
+/* Paragraph styles */
+p {
+  font-size: 20px;
+  line-height: 1.5;
+  color: black;
+}
+
+/* List styles */
+ol {
+  list-style: decimal;
+  margin-left: 20px;
+}
+
+/* Link styles */
+a {
+  color: $color5;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

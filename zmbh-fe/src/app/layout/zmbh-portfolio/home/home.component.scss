@@ -16,11 +16,16 @@
     margin: auto !important;
   }
 }
+.row {
+  display: flex;
+}
 
 .card-custom {
   margin-bottom: 20px; /* Térköz a kártyák között */
   width: 100%; /* Egyenletes szélesség */
+  display: flex;
 }
+
 .primary-content {
   max-width: 40%;
   margin-right: 0;
