@@ -14,6 +14,7 @@ import { ZmbhModule } from './layout/zmbh-portfolio/zmbh.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NotificationService } from './layout/shared/notification/notification.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -25,6 +26,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatProgressSpinnerModule,
     ZmbhModule,
     MatSnackBarModule,
+    MatIconModule,
   ],
   providers: [provideClientHydration(), NotificationService],
   bootstrap: [AppComponent],
