@@ -1,20 +1,23 @@
 <div class="content">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1>Rólunk</h1>
-        <p>
-          A
-          <a href="#"
-            ><i><b>ZM-BH Solutions</b></i></a
-          >-nál többek vagyunk, mint egy vállalkozás; szenvedélyes csapatként
-          elkötelezve a világ jobbá tételében. Utazásunk egy egyszerű ötlettel
-          kezdődött: valami különlegeset szerettünk volna létrehozni, ami
-          értéket ad az emberek életéhez.
-        </p>
-      </div>
-    </div>
-  </div>
+<mat-card class="mat-card-custom">
+  <mat-card-content>
+    <mat-tab-group mat-stretch-tabs="false" animationDuration="0ms" mat-align-tabs="center" class="mat-primary">
+      <mat-tab label="Rólunk">
+        <app-zmbh-about-us></app-zmbh-about-us>
+      </mat-tab>
+      <mat-tab label="A csapat">
+        <app-zmbh-about-team></app-zmbh-about-team>
+      </mat-tab>
+      <mat-tab label="Csatlakoznál?">
+        <app-zmbh-about-connect></app-zmbh-about-connect>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>
+</div>
+
+<!-- 
+
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -107,4 +110,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
