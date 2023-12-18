@@ -18,6 +18,6 @@ export class NotificationService {
     aria-label="Example home icon"
     fontIcon="home"
   ></mat-icon>`;
-    this.snackBar.open(iconTemplate + message, '', config);
+    this.snackBar.open(message, '', config);
   }
 }

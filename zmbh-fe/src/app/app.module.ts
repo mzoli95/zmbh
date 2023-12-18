@@ -15,6 +15,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NotificationService } from './layout/shared/notification/notification.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -27,6 +30,9 @@ import { MatIconModule } from '@angular/material/icon';
     ZmbhModule,
     MatSnackBarModule,
     MatIconModule,
+    HttpClientModule,
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot({})
   ],
   providers: [provideClientHydration(), NotificationService],
   bootstrap: [AppComponent],
