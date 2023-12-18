@@ -1,8 +1,44 @@
 @import "../../../../../styles.scss";
 .mat-mdc-card-content{
-    min-height: 22rem;
+    min-height: 0 !important;
     background-color: $color2 !important;
     border:  1px solid $color5;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 
   }
+  .team-members { display: flex; justify-content: center; gap: 4rem; }
+  .team-member { flex-basis: 25%; text-align: left; }
+  .team-member img { width: 50%; height: auto; }
+  .content{
+    padding-top:12px;
+  }
+
+/* Általános elrendezés és tipográfia */
+body {
+  color: #333; /* Általános szövegszín */
+  line-height: 1.6; /* Szöveg sorköz */
+}
+
+.flex-container {
+        display: flex;
+        flex-direction: column;
+        text-align: justify;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 0;
+        padding-top: 12px;
+  }
+  
+
+/* Card stílus */
+.mat-card {
+  max-width: 800px; /* Max szélesség */
+  margin: 20px auto; /* Középre igazítás */
+  background-color: $color2; /* Card háttérszín */
+  border: 1px solid $color5; /* Szegély */
+  box-shadow: 0px 4px 8px rgba($color5, 0.2); /* Árnyék */
+}
+
+.mat-card-content {
+  padding: 20px; /* Belső térköz */
+}

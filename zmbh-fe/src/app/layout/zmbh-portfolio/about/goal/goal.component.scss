@@ -5,4 +5,6 @@
     border:  1px solid $color5;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 
-  }
+  }    
+  .mat-card-content ul { text-align: left; margin-left: 20px; }
+  .mat-card-content li { margin-bottom: 10px; }
