@@ -1,0 +1,52 @@
+
+   
+    <div class="content">
+        <h1>Kérdésed van? Írj nekünk</h1>
+        <mat-card >
+
+            <mat-card-content>
+                    <form [formGroup]="form">
+                        <div class="first-row">
+                         <mat-form-field class="input-full-width">
+                            <mat-label>Név</mat-label>
+                            <input type="text" [formControl]="controls.name" matInput>
+                            @if (controls.name.hasError('required')) {
+                                <mat-error>A név kitöltése <strong>kötelező</strong>!</mat-error>
+                              }
+                          </mat-form-field>
+
+                          <mat-form-field class="input-full-width">
+                            <mat-label>E-mail</mat-label>
+                            <input type="email" matInput [formControl]="controls.email" [errorStateMatcher]="matcher"
+                                   placeholder="Ex. john@example.com">
+                            @if (controls.email.hasError('email') && !controls.email.hasError('required')) {
+                              <mat-error>Kérlek létező e-mail címet adj meg!</mat-error>
+                            }
+                            @if (controls.email.hasError('required')) {
+                              <mat-error>Az e-mail kitöltése <strong>kötelező</strong>!</mat-error>
+                            }
+                          </mat-form-field>
+                        </div>
+                        <div class="first-row">
+                  <mat-form-field class="textarea-full-width">
+                    <mat-label>Szöveg</mat-label>
+                    <textarea style="    height: 120px;
+                    resize: none;" [formControl]="controls.message" matInput ></textarea>
+                    @if (controls.message.hasError('required')) {
+                      <mat-error>A szöveg kitöltése <strong>kötelező</strong>!</mat-error>
+                    }@else if (controls.message.invalid && controls.message.touched) {
+                        <mat-error>Minimum 3 karakter <strong>kötelező</strong>!</mat-error>
+                      }
+                  </mat-form-field>
+                        </div>
+                    
+      
+                      </form>
+    
+            </mat-card-content>
+        </mat-card>
+        <div class="contact-footer">      
+              <button (click)="sendEmail()" zmbhContactBtn routerLink="contact" mat-button>Küldés</button>
+          </div>
+    </div>
+      
