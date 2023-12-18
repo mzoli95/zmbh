@@ -1,14 +1,87 @@
+
+
 @import "../../../../styles.scss";
 
 footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5 rem 1rem;
+  padding: 10px;
   height: 65px;
   color: $color1;
   background-color: $color5;
   margin: 0;
   bottom: 0;
   width: 100%;
+
+  .footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .footer-center {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 65px;
+    color: $color1;
+    background-color: $color5;
+    margin: 0;
+    bottom: 0;
+    width: 100%; 
+  font-size: 18px;
+
+  }
+
+  .footer-logo{
+    width: 45px;
+    height: 45px;
+  }
+  .footer-right {
+    display: flex; /* Flexbox elrendezést alkalmaz */
+    align-items: center; /* Középre igazítja az elemeket függőlegesen */
+    justify-content: flex-end; /* Jobbra igazítja az elemeket vízszintesen */
+  
+    margin-left: auto;
+    a{
+      margin-right:5px;
+    }
+  }
+}
+
+.fa {
+  text-align: center;
+padding-top: 8px;
+background: $color2;
+color: $color5;
+text-decoration: none;
+width: 40px;
+height: 40px;
+font-size: 24px;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 992px) {
+  .footer{
+    padding: 0 !important;
+  }
+  .fa{
+    width:25px;
+    height: 25px;
+    font-size:12px;
+
+  }
+  .footer-center{
+    font-size:10px !important; 
+  }
+  .footer-logo{
+    width:15px !important;
+    height:15px !important;
+    margin-right: 5px !important;
+  }
 }
