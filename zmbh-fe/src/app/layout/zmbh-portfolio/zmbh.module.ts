@@ -7,9 +7,10 @@ import { AboutUsComponent } from './about/about-us/about-us.component';
 import { GoalComponent } from './about/goal/goal.component';
 import { TeamComponent } from './about/team/team.component';
 import { ZmbhRoutingModule } from './zmbh-routing.component';
+import { ContactButtonDirective } from '../shared/directive/contact-button/contact-button.directive';
 
 @NgModule({
-  declarations: [HomeComponent, AboutComponent, AboutUsComponent, GoalComponent,TeamComponent],
+  declarations: [HomeComponent, AboutComponent, AboutUsComponent, GoalComponent,TeamComponent,ContactButtonDirective],
   imports: [MatCardModule,MatTabsModule,ZmbhRoutingModule],
 })
 export class ZmbhModule {}
