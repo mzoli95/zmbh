@@ -6,7 +6,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding-top: 10px;
   height: 65px;
   color: $color1;
   background-color: $color5;
@@ -43,7 +43,8 @@ footer {
     display: flex; /* Flexbox elrendezést alkalmaz */
     align-items: center; /* Középre igazítja az elemeket függőlegesen */
     justify-content: flex-end; /* Jobbra igazítja az elemeket vízszintesen */
-  
+    height: 65px;
+    background-color: $color5;
     margin-left: auto;
     a{
       margin-right:5px;
@@ -59,6 +60,7 @@ color: $color5;
 text-decoration: none;
 width: 40px;
 height: 40px;
+
 font-size: 24px;
 }
 
