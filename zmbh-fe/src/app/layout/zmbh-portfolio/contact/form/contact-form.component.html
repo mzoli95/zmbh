@@ -45,8 +45,8 @@
     
             </mat-card-content>
         </mat-card>
-        <div class="contact-footer">      
-              <button (click)="sendEmail()" zmbhContactBtn routerLink="contact" mat-button>Küldés</button>
+        <div class="contact-footer">
+            <button [disabled]="form.invalid"  (click)="sendEmail()" [zmbhContactBtn]="form.invalid" mat-button>Küldés</button>
           </div>
     </div>
       
