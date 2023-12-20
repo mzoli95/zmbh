@@ -1,6 +1,6 @@
 import { Component, Type } from '@angular/core';
 import {
-    FormControl,
+  FormControl,
   FormGroupDirective,
   NgForm,
   UntypedFormControl,
@@ -12,13 +12,21 @@ import { NotificationType } from '../../../shared/mzbh.enums';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Store } from '@ngrx/store';
 import * as ContactFormActions from '../+state/contact.actions';
+import { updateContactFormField } from '../+state/contact.actions';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
-    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-      const isSubmitted = form && form.submitted;
-      return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-    }
+  isErrorState(
+    control: FormControl | null,
+    form: FormGroupDirective | NgForm | null
+  ): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(
+      control &&
+      control.invalid &&
+      (control.dirty || control.touched || isSubmitted)
+    );
   }
+}
 
 @Component({
   selector: 'app-mzbh-contact-form',
@@ -30,18 +38,30 @@ export class ContactFormComponent {
   matcher = new MyErrorStateMatcher();
 
   controls: any = {
-    name: new UntypedFormControl(null, [Validators.required, Validators.minLength(3)]),
+    name: new UntypedFormControl(null, [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
     email: new UntypedFormControl(null, [
       Validators.required,
       Validators.email,
     ]),
-    message: new UntypedFormControl(null, [Validators.required, Validators.minLength(3)]),
-  }
+    message: new UntypedFormControl(null, [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
+  };
   form: UntypedFormGroup = new UntypedFormGroup(this.controls);
 
   notificationTypeEnum = NotificationType;
 
+  ngOnInit() {
+    this.form.valueChanges.subscribe((values) => {
+      console.log(values);
+      this.store.dispatch(updateContactFormField({ value: values }));
+    });
+  }
   sendEmail() {
-    this.store.dispatch(ContactFormActions.submitEmail())
+    this.store.dispatch(ContactFormActions.submitEmail());
   }
 }

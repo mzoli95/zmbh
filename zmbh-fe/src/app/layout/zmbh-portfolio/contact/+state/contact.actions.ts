@@ -5,19 +5,15 @@ export const updateContactFormField = createAction(
   props<{ value: any }>()
 );
 
-export const submitEmail = createAction(
-  '[Contact] Submit Email'
-);
+export const submitEmail = createAction('[Contact] Submit Email');
 export const submitEmailSuccess = createAction(
-    '[Contact] Submit Email Success'
-  );
-  export const submitEmailError = createAction(
-    '[Contact] Submit Email Error',
-    props<{ error: any }>()
-  );
+  '[Contact] Submit Email Success',
+  props<{ success: any }>()
+);
+export const submitEmailError = createAction(
+  '[Contact] Submit Email Error',
+  props<{ error: any }>()
+);
 
 //   TODO: Majd kiszervezni
-  export const redirectToSuccess = createAction(
-    '[Redirect] Redirect Success'
-  );
-  
+export const redirectToSuccess = createAction('[Redirect] Redirect Success');

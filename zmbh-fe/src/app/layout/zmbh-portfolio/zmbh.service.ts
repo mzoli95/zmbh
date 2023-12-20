@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ZmbhService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  sendEmail(data: { email: string }): Observable<any> {
-    return throwError(() => new Error('Email küldési hiba'));
-
-    return of(null) // this.http.post('/api/send-email', data);
+  sendEmail(data: {
+    email: string;
+    name: string;
+    message: string;
+  }): Observable<any> {
+    console.log(data);
+    return this.http.post(`${environment.apiUrl}/api/contact-us`, data);
   }
 }

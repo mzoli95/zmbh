@@ -4,25 +4,31 @@ import * as ContactFormActions from './contact.actions';
 export const CONTACT_FORM_FEATURE_KEY = 'contact-us';
 
 export interface ContactFormState {
-    contactForm:{
-        name: string;
-        email: string;
-        message: string;
-    }
+  contactForm: {
+    name: string;
+    email: string;
+    message: string;
+  };
 }
 
 export const contactFormInitialState: ContactFormState = {
-    contactForm:{
-        name: '',
-        email: '',
-        message: ''
-    }
+  contactForm: {
+    name: '',
+    email: '',
+    message: '',
+  },
 };
-
 export const contactFormReducer = createReducer(
   contactFormInitialState,
-  on(ContactFormActions.updateContactFormField, (state, {  value }):ContactFormState => ({
+  on(ContactFormActions.redirectToSuccess, (state) => ({
     ...state,
-    contactForm: value
+    ...contactFormInitialState,
+  })),
+  on(ContactFormActions.updateContactFormField, (state, { value }) => ({
+    ...state,
+    contactForm: {
+      ...state.contactForm,
+      ...value,
+    },
   }))
 );
