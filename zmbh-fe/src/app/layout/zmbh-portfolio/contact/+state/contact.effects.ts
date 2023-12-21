@@ -47,7 +47,7 @@ export class ContactFormEffects {
       }),
       map(() => MzbhPortfolioActions.redirectToHome())
     )
-  );
+  ).subscribe();
 
   errorNotification$ = createEffect(() =>
     this.actions$.pipe(
