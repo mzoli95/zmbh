@@ -13,6 +13,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { Store } from '@ngrx/store';
 import * as ContactFormActions from '../+state/contact.actions';
 import { updateContactFormField } from '../+state/contact.actions';
+import { mzbhEmailValidator } from '../../../shared/validator/mzbh-email.validator';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -44,7 +45,7 @@ export class ContactFormComponent {
     ]),
     email: new UntypedFormControl(null, [
       Validators.required,
-      Validators.email,
+      mzbhEmailValidator,
     ]),
     message: new UntypedFormControl(null, [
       Validators.required,

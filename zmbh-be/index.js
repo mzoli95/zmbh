@@ -28,7 +28,8 @@ app.post("/api/contact-us", (req, res) => {
   console.log(email);
   console.log(name);
   console.log(message);
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
   console.log(emailRegex.test(email));
   if (!emailRegex.test(email)) {
     return res
