@@ -11,7 +11,6 @@ import { NotificationType } from '../../shared/mzbh.enums';
 export class ContactComponent {
   constructor(private notificationService: NotificationService) {}
 
-
   notificationTypeEnum = NotificationType;
 
   notification(type: NotificationType) {

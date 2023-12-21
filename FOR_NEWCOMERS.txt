@@ -39,3 +39,7 @@ Install project step by step from scratch
 		> Click to the "Terminal" tab and click to the "New Terminal" option
 		> In the bottom of VSCode you will get a new terminal where you have to make sure you are in the correct folder path
 - With "npm start" you can start the project (LATER NEEDS TO UPDATE THIS COMMAND)
+
+
+- About node server
+	Create an empty directory, run cmd and put npm init. Create a server.js or something name file and you can start to work on it via vscode
