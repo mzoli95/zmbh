@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
   service: process.env.SMTP_SERVICE,
   host: process.env.SMTP_HOST,
   port: process.env.SMTP_PORT,
-  secure: true, // Használd a true értéket, ha a port 465-ös, false, ha 587-es
+  secure: process.env.SMTP_SECURE,
   auth: {
     user: process.env.SMTP_USERNAME,
     pass: process.env.SMTP_PASSWORD,
@@ -29,8 +29,6 @@ app.post("/api/contact-us", (req, res) => {
   console.log(name);
   console.log(message);
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-  console.log(emailRegex.test(email));
   if (!emailRegex.test(email)) {
     return res
       .status(400)
@@ -40,8 +38,8 @@ app.post("/api/contact-us", (req, res) => {
   const options = {
     from: email,
     to: "zmbhsolutions@gmail.com",
-    subject: `New message from the Contact-us form: ${name}`,
-    text: `From: ${name}\nEmail: ${email}\nMessage: ${message}`,
+    subject: `Új üzenet érkezett a Contact-us oldalról: ${name}`,
+    text: `Név: ${name}\nEmail: ${email}\nÜzenet: ${message}`,
   };
 
   transporter.sendMail(options, (error, info) => {

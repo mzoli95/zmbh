@@ -14,6 +14,3 @@ export const submitEmailError = createAction(
   '[Contact] Submit Email Error',
   props<{ error: any }>()
 );
-
-//   TODO: Majd kiszervezni
-export const redirectToSuccess = createAction('[Redirect] Redirect Success');

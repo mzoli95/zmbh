@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect, concatLatestFrom } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
 import { catchError, mergeMap, map, tap, take } from 'rxjs/operators';
 import * as ContactFormActions from './contact.actions';
+import * as MzbhPortfolioActions from '../../+state/zmbh-portfolio.actions';
 import { ZmbhService } from '../../zmbh.service';
 import { selectEmail } from './contact.selectors';
 import { NotificationService } from '../../../shared/notification/notification.service';
 import { NotificationType } from '../../../shared/mzbh.enums';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { of } from 'rxjs';
 
 @Injectable()
 export class ContactFormEffects {
@@ -38,27 +38,15 @@ export class ContactFormEffects {
   successNotification$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ContactFormActions.submitEmailSuccess),
-      take(1),
       tap((success) => {
         const successMessage = success.success?.message;
-        console.log(success.success);
         this.notificationService.openSnackBar(
           successMessage,
           NotificationType.Success
         );
       }),
-      map(() => ContactFormActions.redirectToSuccess())
+      map(() => MzbhPortfolioActions.redirectToHome())
     )
-  );
-
-  //TODO majd kiszervezni szintén
-  redirect$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(ContactFormActions.redirectToSuccess),
-        tap(() => this.router.navigate(['/']))
-      ),
-    { dispatch: false }
   );
 
   errorNotification$ = createEffect(() =>
@@ -79,7 +67,6 @@ export class ContactFormEffects {
   constructor(
     private actions$: Actions,
     private store: Store,
-    private router: Router,
     private contactService: ZmbhService,
     private notificationService: NotificationService
   ) {}

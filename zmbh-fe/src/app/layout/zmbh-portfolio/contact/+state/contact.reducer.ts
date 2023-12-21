@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as ContactFormActions from './contact.actions';
+import * as MzbhPortfolioActions from '../../+state/zmbh-portfolio.actions';
 
 export const CONTACT_FORM_FEATURE_KEY = 'contact-us';
 
@@ -20,7 +21,7 @@ export const contactFormInitialState: ContactFormState = {
 };
 export const contactFormReducer = createReducer(
   contactFormInitialState,
-  on(ContactFormActions.redirectToSuccess, (state) => ({
+  on(MzbhPortfolioActions.redirectToHome, (state) => ({
     ...state,
     ...contactFormInitialState,
   })),
