@@ -14,3 +14,4 @@ export const submitEmailError = createAction(
   '[Contact] Submit Email Error',
   props<{ error: any }>()
 );
+export const error = createAction('[Contact] Error');

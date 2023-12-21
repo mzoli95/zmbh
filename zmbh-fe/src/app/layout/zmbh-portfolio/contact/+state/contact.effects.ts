@@ -8,7 +8,6 @@ import { ZmbhService } from '../../zmbh.service';
 import { selectEmail } from './contact.selectors';
 import { NotificationService } from '../../../shared/notification/notification.service';
 import { NotificationType } from '../../../shared/mzbh.enums';
-import { Router } from '@angular/router';
 import { of } from 'rxjs';
 
 @Injectable()
@@ -25,10 +24,9 @@ export class ContactFormEffects {
               success: successMessage,
             });
           }),
-          catchError((errorMessage) => {
-            return of(
-              ContactFormActions.submitEmailError({ error: errorMessage })
-            );
+          catchError((error) => {
+            console.error('Hiba történt az email küldése során: ', error);
+            return of(ContactFormActions.submitEmailError({ error: error }));
           })
         )
       )
@@ -45,9 +43,9 @@ export class ContactFormEffects {
           NotificationType.Success
         );
       }),
-      map(() => MzbhPortfolioActions.redirectToHome())
+      map(() => MzbhPortfolioActions.redirectToHome()) // Nem kell subscribe, a createEffect(()) lekezeli, viszont visszatérés nélkül végtelen ciklusba fut
     )
-  ).subscribe();
+  );
 
   errorNotification$ = createEffect(() =>
     this.actions$.pipe(
@@ -60,9 +58,10 @@ export class ContactFormEffects {
           errorMessage,
           NotificationType.Error
         );
-      })
+      }),
+      map(() => ContactFormActions.error()) // Nem kell subscribe, a createEffect(()) lekezeli, viszont visszatérés nélkül végtelen ciklusba fut
     )
-  ).subscribe();
+  );
 
   constructor(
     private actions$: Actions,
