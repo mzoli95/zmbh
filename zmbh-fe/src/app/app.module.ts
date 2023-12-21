@@ -1,30 +1,42 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/shared/header/header.component';
-import { ButtonModule } from 'primeng/button';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HomeComponent } from './layout/zmbh-portfolio/home/home.component';
-import { AboutComponent } from './layout/zmbh-portfolio/about/about.component';
-
+import { FooterComponent } from './layout/shared/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ZmbhModule } from './layout/zmbh-portfolio/zmbh.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NotificationService } from './layout/shared/notification/notification.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent,
-    AboutComponent
-  ],
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ButtonModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
+    ZmbhModule,
+    MatSnackBarModule,
+    MatIconModule,
+    HttpClientModule,
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot({}),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
-  providers: [
-    provideClientHydration()
-  ],
-  bootstrap: [AppComponent]
+  providers: [provideClientHydration(), NotificationService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,9 +1,46 @@
-$color1: #E0EDF3;
-$color2: #B1D9D9;
-$color3: #79BFB7;
-$color4: #53A69E;
-$color5: #2B8C7B;
+$color1: #e0edf3;
+$color2: #b1d9d9;
+$color3: #79bfb7;
+$color4: #53a69e;
+$color5: #2b8c7b;
 
-body{
-    background-color:$color1;
+body {
+  background-color: $color1;
 }
+.notification-service {
+  .mdc-snackbar__surface {
+    background-color: $color5 !important;
+    color: white !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .notification-service {
+    .mdc-snackbar__surface {
+      width: 50% !important;
+    }
+  }
+}
+
+
+:host ::ng-deep{
+  .mdc-tab-indicator .mdc-tab-indicator__content--underline {
+    border-color: $color5 !important;
+  }
+  
+ .mat-mdc-tab  .mdc-tab__text-label {
+  color: $color1;
+}
+
+.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+color: $color5 !important;
+}
+
+
+.mat-mdc-card-content{
+  min-height: 27rem;
+}
+.mat-mdc-tab:hover .mdc-tab__text-label{
+color: $color4 !important;
+}
+} 
