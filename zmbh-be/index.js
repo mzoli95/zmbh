@@ -1,7 +1,8 @@
 const cors = require("cors");
-require("dotenv").config();
 const express = require("express");
 const nodemailer = require("nodemailer");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 const app = express();
 app.use(express.json());
 
@@ -21,6 +22,9 @@ app.use(
     origin: "http://localhost:4200",
   })
 );
+
+const authRoute = require("./authorization/auth");
+app.use("/api/auth", authRoute);
 app.post("/api/contact-us", (req, res) => {
   const { email, name, message } = req.body;
   const data = req.body;

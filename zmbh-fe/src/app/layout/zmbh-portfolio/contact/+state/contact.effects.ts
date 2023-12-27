@@ -51,6 +51,7 @@ export class ContactFormEffects {
     this.actions$.pipe(
       ofType(ContactFormActions.submitEmailError),
       tap((error) => {
+        console.log(error);
         const errorMessage: string =
           error.error?.error?.message ||
           `Hiba történt: ${error.error?.message}`;

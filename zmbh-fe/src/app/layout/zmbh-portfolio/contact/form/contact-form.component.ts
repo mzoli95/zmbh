@@ -58,7 +58,6 @@ export class ContactFormComponent {
 
   ngOnInit() {
     this.form.valueChanges.subscribe((values) => {
-      console.log(values);
       this.store.dispatch(updateContactFormField({ value: values }));
     });
   }

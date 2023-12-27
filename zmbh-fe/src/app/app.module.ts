@@ -14,9 +14,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { AuthService } from './authorization/auth.service';
+import { AuthInterceptor } from './authorization/auth.interceptor';
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
@@ -33,7 +35,15 @@ import { environment } from '../environments/environment';
     StoreModule.forRoot({}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
-  providers: [NotificationService],
+  providers: [
+    NotificationService,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
