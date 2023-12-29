@@ -48,7 +48,7 @@ git clone https://github.com/mzoli95/zmbh.git
 - Download or upgrade your [Node.js](https://nodejs.org/en) and install it
 
 ### Visual Studio
-- Download or upgrade your Visual Studio Code (VSCode) from code.visualstudio.com and install it
+- Download and install [Visual Studio Code ](https://code.visualstudio.com)
 
 ## Requriements
 - Install or update your Angular version if it's needed
