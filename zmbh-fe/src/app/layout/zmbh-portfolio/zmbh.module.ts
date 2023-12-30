@@ -15,6 +15,11 @@ import { ContactFormComponent } from './contact/form/contact-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ZmbhService } from './zmbh.service';
 import {
+  NgbCarousel,
+  NgbModule,
+  NgbCarouselConfig,
+} from '@ng-bootstrap/ng-bootstrap';
+import {
   CONTACT_FORM_FEATURE_KEY,
   contactFormInitialState,
   contactFormReducer,
@@ -41,6 +46,8 @@ import { ZmbhPortfolioEffects } from './+state/zmbh-portfolio.effects';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    NgbCarousel,
+    NgbModule,
     EffectsModule.forFeature([ContactFormEffects]),
     EffectsModule.forFeature([ZmbhPortfolioEffects]),
     StoreModule.forFeature(CONTACT_FORM_FEATURE_KEY, contactFormReducer, {

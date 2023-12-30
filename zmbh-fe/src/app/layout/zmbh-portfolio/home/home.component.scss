@@ -3,51 +3,67 @@
 .content {
   min-height: calc(100vh - 215px);
 }
+.carousel-container {
+  /* Adjust the container as needed */
+}
+.picsum-img-wrapper img {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+}
 
-.image-content-zb{
+@media (max-width: 768px) {
+  .carousel-caption h3,
+  .carousel-caption p {
+    font-size: smaller; /* Adjust font size on smaller screens */
+  }
+
+  .picsum-img-wrapper img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+  }
+}
+
+.image-content-zb {
   border: 2px solid $color5;
   border-radius: 30px;
 }
-.rounded-corners-zb{
-  width:325px;
+.rounded-corners-zb {
+  width: 325px;
   height: 300px;
   border-radius: 28px;
 }
-.image-content-zb2{
+.image-content-zb2 {
   border: 2px solid $color5;
   border-radius: 30px;
 }
-.rounded-corners-zb2{
+.rounded-corners-zb2 {
   width: 500px;
-  height:300px;
+  height: 300px;
   border-radius: 28px;
 }
 
-
-
-
-.content-wrapper{
+.content-wrapper {
   display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 30px 0;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px 0;
 }
-.text-content{
+.text-content {
   max-width: 45%;
 }
 
-.flex-container{
-  font-size:12px;
+.flex-container {
+  font-size: 12px;
 }
 @media (max-width: 992px) {
-  .content-wrapper{
-    display:block;
+  .content-wrapper {
+    display: block;
   }
-  .text-content{
+  .text-content {
     max-width: 99%;
     margin: 0 10px;
   }
-  
+
   .content {
     min-height: calc(100vh - 285px);
   }
@@ -59,32 +75,29 @@
     max-width: 100% !important;
     margin: auto !important;
   }
-  .rounded-corners-zb{
+  .rounded-corners-zb {
     height: 200px;
     width: 200px;
   }
-  .rounded-corners-zb2{
+  .rounded-corners-zb2 {
     height: 200px;
     width: 320px;
   }
-  .image-content-zb{
+  .image-content-zb {
     text-align: center;
     border: 0 !important;
     border-radius: 0 !important;
   }
-  .image-content-zb2{
+  .image-content-zb2 {
     text-align: center;
     border: 0 !important;
     border-radius: 0 !important;
   }
 }
-
-
 
 .row {
   display: flex;
 }
-
 
 .primary-content {
   max-width: 80%;
