@@ -6,17 +6,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { LoginComponent } from './login/login.component';
-import {  MatButtonModule } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '../layout/shared/shared.module';
 import { StoreModule } from '@ngrx/store';
-import { AUTH_FORM_FEATURE_KEY, authFormInitialState, authFormReducer } from './+state/auth.reducer';
+import {
+  AUTH_FORM_FEATURE_KEY,
+  authFormInitialState,
+  authFormReducer,
+} from './+state/auth.reducer';
 import { RegisterComponent } from './register/register.component';
+
 @NgModule({
-  declarations: [
-    LoginComponent,
-    RegisterComponent,
-  ],
+  declarations: [LoginComponent, RegisterComponent],
   imports: [
     MatCardModule,
     MatTabsModule,
@@ -30,8 +32,6 @@ import { RegisterComponent } from './register/register.component';
       initialState: authFormInitialState,
     }),
   ],
-  exports:[
-
-  ]
+  exports: [],
 })
 export class AuthModule {}

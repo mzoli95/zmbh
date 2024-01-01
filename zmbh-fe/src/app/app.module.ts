@@ -20,6 +20,7 @@ import { environment } from '../environments/environment';
 import { AuthService } from './authorization/auth.service';
 import { AuthInterceptor } from './authorization/auth.interceptor';
 import { AuthModule } from './authorization/auth.module';
+import { SharedModule } from './layout/shared/shared.module';
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
@@ -33,12 +34,12 @@ import { AuthModule } from './authorization/auth.module';
     MatIconModule,
     HttpClientModule,
     AuthModule,
+    SharedModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot({}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [
-    NotificationService,
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,
