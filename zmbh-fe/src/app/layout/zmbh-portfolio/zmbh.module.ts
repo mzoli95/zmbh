@@ -7,7 +7,6 @@ import { AboutUsComponent } from './about/about-us/about-us.component';
 import { GoalComponent } from './about/goal/goal.component';
 import { TeamComponent } from './about/team/team.component';
 import { ZmbhRoutingModule } from './zmbh-routing.component';
-import { ContactButtonDirective } from '../shared/directive/contact-button/contact-button.directive';
 import { ContactComponent } from './contact/contact.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,6 +22,9 @@ import { ContactFormEffects } from './contact/+state/contact.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { ZmbhPortfolioEffects } from './+state/zmbh-portfolio.effects';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -31,7 +33,6 @@ import { ZmbhPortfolioEffects } from './+state/zmbh-portfolio.effects';
     GoalComponent,
     TeamComponent,
     ContactComponent,
-    ContactButtonDirective,
     ContactFormComponent,
   ],
   imports: [
@@ -39,8 +40,11 @@ import { ZmbhPortfolioEffects } from './+state/zmbh-portfolio.effects';
     MatTabsModule,
     ZmbhRoutingModule,
     MatInputModule,
+    MatButtonModule,
+    MatIconModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    SharedModule,
     EffectsModule.forFeature([ContactFormEffects]),
     EffectsModule.forFeature([ZmbhPortfolioEffects]),
     StoreModule.forFeature(CONTACT_FORM_FEATURE_KEY, contactFormReducer, {

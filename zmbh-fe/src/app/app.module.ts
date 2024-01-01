@@ -19,6 +19,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { AuthService } from './authorization/auth.service';
 import { AuthInterceptor } from './authorization/auth.interceptor';
+import { AuthModule } from './authorization/auth.module';
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
@@ -31,6 +32,7 @@ import { AuthInterceptor } from './authorization/auth.interceptor';
     MatSnackBarModule,
     MatIconModule,
     HttpClientModule,
+    AuthModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot({}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],

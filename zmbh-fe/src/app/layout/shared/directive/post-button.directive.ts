@@ -1,15 +1,15 @@
 import { Directive, ElementRef, Renderer2, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[zmbhContactBtn]'
+  selector: '[zmbhPostBtn]'
 })
-export class ContactButtonDirective implements OnInit {
+export class PostButtonDirective implements OnInit {
 
   private _isInvalid: boolean = false;
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
-  @Input('zmbhContactBtn')
+  @Input('zmbhPostBtn')
   set isInvalid(value: boolean) {
     this._isInvalid = value;
     if(this._isInvalid){

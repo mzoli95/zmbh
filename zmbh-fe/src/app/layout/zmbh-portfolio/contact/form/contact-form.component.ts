@@ -7,8 +7,6 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { NotificationService } from '../../../shared/notification/notification.service';
-import { NotificationType } from '../../../shared/mzbh.enums';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Store } from '@ngrx/store';
 import * as ContactFormActions from '../+state/contact.actions';
@@ -53,8 +51,6 @@ export class ContactFormComponent {
     ]),
   };
   form: UntypedFormGroup = new UntypedFormGroup(this.controls);
-
-  notificationTypeEnum = NotificationType;
 
   ngOnInit() {
     this.form.valueChanges.subscribe((values) => {

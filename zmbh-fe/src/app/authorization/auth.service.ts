@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -41,5 +42,16 @@ export class AuthService {
     this.token = '';
 
     this.http.post(this.logoutUrl, {}).subscribe();
+  }
+
+  registerUser(data: any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/api/register`, data).pipe(
+      catchError((error) => {
+        console.log(error);
+        return throwError(
+          () => new Error(error.message || 'Email küldési hiba')
+        );
+      })
+    );
   }
 }
