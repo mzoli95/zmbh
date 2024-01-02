@@ -67,6 +67,16 @@
   }
 }
 
+.nav-item.active .nav-link {
+  color: rgb(4, 90, 69);
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.nav-item.active .nav-link:hover {
+  color: $color3;
+}
+
 h1 {
   font-size: 36px !important;
   color: $color1 !important;
