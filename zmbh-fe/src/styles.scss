@@ -14,7 +14,6 @@ body {
   }
 }
 
-
 @media (max-width: 992px) {
   .notification-service {
     .mdc-snackbar__surface {
@@ -23,28 +22,22 @@ body {
   }
 }
 
-
-:host ::ng-deep{
+:host ::ng-deep {
   .mdc-tab-indicator .mdc-tab-indicator__content--underline {
     border-color: $color5 !important;
   }
-  
- .mat-mdc-tab  .mdc-tab__text-label {
-  color: $color1;
+
+  .mat-mdc-tab .mdc-tab__text-label {
+    color: $color1;
+    font-size: 18px;
+  }
+
+  .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    color: $color5 !important;
+    font-size: 18px;
+  }
+
+  .mat-mdc-tab:hover .mdc-tab__text-label {
+    color: $color4 !important;
+  }
 }
-
-.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
-color: $color5 !important;
-}
-
-
-.mat-mdc-card-content{
-  min-height: 27rem;
-}
-.mat-mdc-tab:hover .mdc-tab__text-label{
-color: $color4 !important;
-}
-} 
-
-
-

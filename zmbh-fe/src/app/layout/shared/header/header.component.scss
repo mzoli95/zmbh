@@ -1,83 +1,93 @@
 @import "../../../../styles.scss";
 
 .navbar {
-  background-color: $color5;
+  background: linear-gradient(to top left, $color3, $color5);
   height: 150px;
-  padding: 0 5rem;
-  font-weight: bold;
+  box-shadow: 0 4px 8px 8px rgba(2, 37, 15, 0.19),
+    0 15px 15px 15px rgba(0, 0, 0, 0.15);
 }
-
-.navbar-header {
-  display: flex;
-  font-weight: bold;
-
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+.navbar .container {
+  display: contents !important;
+  padding-right: 10px;
 }
 
 @media (max-width: 992px) {
-  .navbar .navbar-header {
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  .justify-content-start {
+    width: 100%;
+    display: flex;
+    justify-content: space-between !important;
   }
 
   .navbar {
     background-color: $color5;
     height: 220px;
-    padding: 0 5rem;
+    padding: 0;
     font-weight: bold;
   }
 
   .navbar .navbar-toggler {
     order: 1;
-    margin-top: 10px;
+    height: 50px;
     background-color: $color2;
     opacity: 0.5;
     font-weight: bold;
+    align-self: center;
   }
 
   .navbar .navbar-collapse {
     background-color: $color4;
-
     border-style: solid;
     border-color: $color3;
-
     z-index: 1000;
-
     text-align: center;
     font-weight: bold;
     color: white !important;
   }
 }
 
-.navbar-brand {
-  font-size: 28px;
-  color: $color1;
-  font-weight: bold;
-}
-
 .navbar-nav .nav-link {
   color: $color1;
-  font-weight: bold;
+  text-shadow: 2px 2px 4px $color5;
 
   &:hover {
     color: $color3;
+    border: 2px solid $color3;
   }
 }
 
 .nav-item.active .nav-link {
-  color: rgb(4, 90, 69);
+  color: rgb(3, 78, 58);
+  text-shadow: 2px 2px 4px $color5;
+
+  border: 2px solid rgb(3, 78, 58);
+
   text-decoration: underline;
   font-weight: bold;
 }
 
 .nav-item.active .nav-link:hover {
   color: $color3;
+  border: 2px solid $color3;
 }
 
-h1 {
-  font-size: 36px !important;
-  color: $color1 !important;
+.nav-link {
+  text-align: center;
+  border: 2px solid $color1;
+  font-weight: bold;
+  font-style: normal;
+  font-variant: small-caps;
+  border-radius: 25px;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-item {
+  padding: 0 5px;
+}
+
+.fa {
+  font-size: 18px;
+
+  width: 18px;
+  height: 18px;
 }

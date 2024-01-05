@@ -1,0 +1,10 @@
+@import "../../../../../styles.scss";
+.content-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px 0;
+}
+.text-content {
+  max-width: 45%;
+}

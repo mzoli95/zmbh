@@ -25,6 +25,15 @@ import { ZmbhPortfolioEffects } from './+state/zmbh-portfolio.effects';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '../shared/shared.module';
+import { HomeWelcomeComponent } from './home/welcome/welcome.component';
+import { HomeServicesComponent } from './home/service/services.component';
+import { HomeWhyChooseUsComponent } from './home/why-choose-us/why-choose-us.component';
+import { HomePortfoliosComponent } from './home/portfolio/portfolios.component';
+import { HomeMatrixesComponent } from './home/matrix/matrixes.component';
+import { HomeContactUsComponent } from './home/contact-us/contact-us.component';
+import { HomeWhySecondaryTabComponent } from './home/why-choose-us/secondary-tab/secondary-tab.component';
+import { NgbCarousel, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -34,6 +43,13 @@ import { SharedModule } from '../shared/shared.module';
     TeamComponent,
     ContactComponent,
     ContactFormComponent,
+    HomeWelcomeComponent,
+    HomeServicesComponent,
+    HomeWhyChooseUsComponent,
+    HomePortfoliosComponent,
+    HomeMatrixesComponent,
+    HomeContactUsComponent,
+    HomeWhySecondaryTabComponent,
   ],
   imports: [
     MatCardModule,
@@ -44,6 +60,8 @@ import { SharedModule } from '../shared/shared.module';
     MatIconModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    NgbCarousel,
+    NgbModule,
     SharedModule,
     EffectsModule.forFeature([ContactFormEffects]),
     EffectsModule.forFeature([ZmbhPortfolioEffects]),
