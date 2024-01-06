@@ -33,6 +33,7 @@ import { HomeMatrixesComponent } from './home/matrix/matrixes.component';
 import { HomeContactUsComponent } from './home/contact-us/contact-us.component';
 import { HomeWhySecondaryTabComponent } from './home/why-choose-us/secondary-tab/secondary-tab.component';
 import { NgbCarousel, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { NgbCarousel, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbCarousel,
     NgbModule,
     SharedModule,
+    ChartModule,
     EffectsModule.forFeature([ContactFormEffects]),
     EffectsModule.forFeature([ZmbhPortfolioEffects]),
     StoreModule.forFeature(CONTACT_FORM_FEATURE_KEY, contactFormReducer, {
