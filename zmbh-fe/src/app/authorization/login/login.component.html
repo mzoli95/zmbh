@@ -2,15 +2,18 @@
   <div class="row justify-content-center">
     <div class="col-md-5">
       <div class="card">
-        <div class="card-header">
-          Bejelentkezés
-        </div>
+        <div class="card-header">Bejelentkezés</div>
         <div class="card-body">
           <form [formGroup]="form">
             <div class="form-group">
-              <mat-form-field  class="w-100">
+              <mat-form-field class="w-100">
                 <mat-label>Felhasználónév</mat-label>
-                <input matInput type="text" placeholder="Add meg a felhasználóneved" [formControl]="controls.username">
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Add meg a felhasználóneved"
+                  [formControl]="loginFormControls.username"
+                />
                 <mat-icon matSuffix>account_box</mat-icon>
               </mat-form-field>
             </div>
@@ -18,21 +21,34 @@
               <mat-form-field class="w-100">
                 <mat-label>Jelszó</mat-label>
 
-                <input matInput [formControl]="controls.password"  placeholder="Add meg a jelszavad" [type]="hide ? 'password' : 'text'">
-                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </button>
+                <input
+                  matInput
+                  [formControl]="loginFormControls.password"
+                  placeholder="Add meg a jelszavad"
+                  [type]="hide ? 'password' : 'text'"
+                />
+                <button
+                  mat-icon-button
+                  matSuffix
+                  (click)="hide = !hide"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide"
+                >
+                  <mat-icon>{{
+                    hide ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
               </mat-form-field>
             </div>
             <div class="text-center">
               <button
-              [disabled]="form.invalid"
-              [zmbhPostBtn]="form.invalid"
-              mat-button
-            >
-              Bejelentkezés
-            </button>
-          </div>
+                [disabled]="form.invalid"
+                [zmbhPostBtn]="form.invalid"
+                mat-button
+              >
+                Bejelentkezés
+              </button>
+            </div>
           </form>
         </div>
       </div>

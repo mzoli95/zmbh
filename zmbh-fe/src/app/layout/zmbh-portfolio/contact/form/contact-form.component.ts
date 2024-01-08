@@ -1,6 +1,7 @@
 import { Component, Type } from '@angular/core';
 import {
   FormControl,
+  FormGroup,
   FormGroupDirective,
   NgForm,
   UntypedFormControl,
@@ -12,6 +13,9 @@ import { Store } from '@ngrx/store';
 import * as ContactFormActions from '../+state/contact.actions';
 import { updateContactFormField } from '../+state/contact.actions';
 import { mzbhEmailValidator } from '../../../shared/validator/mzbh-email.validator';
+import { ContactState } from '../+state/contact.reducer';
+
+type ContactUsForm = Record<keyof ContactState, FormControl>;
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -36,7 +40,7 @@ export class ContactFormComponent {
   constructor(private store: Store) {}
   matcher = new MyErrorStateMatcher();
 
-  controls: any = {
+  contactUsFormControls: ContactUsForm = {
     name: new UntypedFormControl(null, [
       Validators.required,
       Validators.minLength(3),
@@ -50,7 +54,7 @@ export class ContactFormComponent {
       Validators.minLength(3),
     ]),
   };
-  form: UntypedFormGroup = new UntypedFormGroup(this.controls);
+  form = new FormGroup(this.contactUsFormControls);
 
   ngOnInit() {
     this.form.valueChanges.subscribe((values) => {
