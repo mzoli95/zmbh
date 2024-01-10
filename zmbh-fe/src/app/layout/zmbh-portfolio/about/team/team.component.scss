@@ -5,7 +5,17 @@
   border: 1px solid $color5;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
-
+.team-content {
+  color: $color5;
+  font-weight: bold;
+  letter-spacing: 1px;
+  justify-content: center;
+  display: flex;
+}
+.team-member {
+  background-color: rgba($color5, 0.2);
+  border-radius: 5%;
+}
 .team-member p br {
   content: "";
   margin-bottom: 20px;
