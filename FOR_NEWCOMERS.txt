@@ -1,45 +1,81 @@
-Install project step by step from scratch
+# Install project step by step from scratch
 
-- Download and install git from git-scm.com
-- Select a folder (name of it e.g.: "zmhb") where you want to work in
-- In your "zmbh" folder right click and click to "Open Git Bash here"
-- Configure git with your username and email:
-	~ git config --global user.name "YOUR_NAME"
-	~ git config --global user.email "YOUR_EMAIL"
-- Create an SSH and connect it to Github to get the project with
-	~ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
-	~ Move to the folder where is it ( ~/.ssh/id_rsa.pub )
-	~ Copy the SSH without your email address
-	~ Open Github and go to the settings:
-		> Click to SSH and GPG keys
-		> New SSH key
-		> Paste your pub SSH without your email address and save it
-		> Now you will able to clone your repository with ssh cloning
-		> Select the "<> Code" button on zmbh repository and copy the path below SSH tab
-- Clone your repository
-	~ After copied your SSH path just paste it to your Git Bash in the selected folder
-	~ git clone git@github.com:mzoli95/zmbh.git
-	~ You have cloned the repository successfully
-- Download or upgrade your Node.js from nodejs.org ( I recommend the LTS one ) and install it
-- Download or upgrade your Visual Studio Code (VSCode) from code.visualstudio.com and install it
+## Git
+
+Git client we recommend [Git SCM](https://git-scm.com)
+
+### Steps to clone:
+Navigate to a folder you want to store the repository or
+create a new one (eg.: Projects)
+
+Configure git with your username and email:
+```
+git config --global user.name "YOUR_NAME"
+git config --global user.email "YOUR_EMAIL"
+```
+### SSH
+Create an SSH and connect it to Github to get the project with
+
+> `ssh-keygen` is a tool to quickly create ssh keys
+
+Move to the folder where it is located: 
+- Linux/MacOs: ( ~/.ssh/id_rsa.pub )
+- Windows ( /c/Users/*Your Username*/.ssh/id_rsa.pub)
+
+Use this [Settings](https://github.com/settings/keys) to add
+a new SSH key to your github profile
+
+- Give a title to your SSH key (e.g.: "zmbh")
+- Paste the key you copied from id_rsa.pub file
+
+```
+git clone git@github.com:mzoli95/zmbh.git
+```
+
+> Now you will able to clone your repository with ssh cloning
+
+### HTTP
+
+Alternatively, you can use https cloning as well but you have to give your username and password every time (using a browser that cache your login makes this process easier)
+	 when you want to push something to the repository
+		
+> Select the "<> Code" button on zmbh repository and copy the path below HTTPS tab
+> You can clone your repository with this command: 
+```
+git clone https://github.com/mzoli95/zmbh.git
+```
+### Node.JS
+- Download or upgrade your [Node.js](https://nodejs.org/en) and install it
+
+### Visual Studio
+- Download and install [Visual Studio Code ](https://code.visualstudio.com)
+
+## Requriements
 - Install or update your Angular version if it's needed
-	~ npm install -g @angular/cli
-	~ If it's needed you can update your npm as well with this command: npm install -g npm@latest
+	```
+	npm install -g @angular/cli
+	```
+	- If it's needed you can update your npm as well with this command:
+	```
+	npm install -g npm@latest
+	```
 	
-	(NOT NEEDED, just good to know it)
-		// ~ If you want to create a new project: ng new "YOUR_PROJECT_NAME"
-	 	In case you got an error after this command (ng : File C:\Users\zoli1\AppData\Roaming\npm\ng.ps1 		cannot be loaded because running scripts is disabled on this system.):
-		> Write this command: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-		//
+### Windows 
+Windows users might face an issue such as:
+	 	```	
+		cannot be loaded because running scripts is disabled on this system.
+		```
+
+ Write this command into an admin powershell: 
+ ```
+ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```	
 	
 - After installed the programs before I recommend you to restart your computer
+### Developmient
 - Open the zmbh repository
-	~ Open VSCode:
-		> Select "Open folder" and search the folder where you cloned your repository and open it
-		> Click to the "Terminal" tab and click to the "New Terminal" option
-		> In the bottom of VSCode you will get a new terminal where you have to make sure you are in the correct folder path
-- With "npm start" you can start the project (LATER NEEDS TO UPDATE THIS COMMAND)
-
-
-- About node server
-	Create an empty directory, run cmd and put npm init. Create a server.js or something name file and you can start to work on it via vscode
+	 - Open VSCode:
+		- Select "Open folder" and search the folder where you cloned your repository and open it
+		-  Click to the "Terminal" tab and click to the "New Terminal" option
+		- In the bottom of VSCode you will get a new terminal where you have to make sure you are in the correct folder path
+- With `npm run start` you can start the project
