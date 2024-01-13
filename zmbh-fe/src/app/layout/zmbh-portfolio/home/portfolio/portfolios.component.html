@@ -1,30 +1,17 @@
 <div class="content-wrapper primary-background-color">
   <div class="col-lg-5 col-md-12 col-sm-12">
     <ngb-carousel>
+      @for (picture of pictures; track picture) {
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
-          <img
-            src="../../../../assets/innovate6.png"
-            alt="Random first slide"
-          />
+          <img [src]="picture.url" [alt]="picture.alt" />
         </div>
         <div class="carousel-caption">
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>{{ picture.title }}</h3>
+          <!-- <p>{{picture.description}}</p> -->
         </div>
       </ng-template>
-      <ng-template ngbSlide>
-        <div class="picsum-img-wrapper">
-          <img
-            src="../../../../assets/innovate6.png"
-            alt="Random second slide"
-          />
-        </div>
-        <div class="carousel-caption">
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </ng-template>
+      } @empty { Empty list of projects, something went wrong with the server. }
     </ngb-carousel>
   </div>
 </div>
