@@ -1,1 +1,22 @@
-<p>about works!</p>
+<div class="content">
+  <mat-card class="mat-card-custom">
+    <mat-card-content>
+      <mat-tab-group
+        mat-stretch-tabs="false"
+        animationDuration="0ms"
+        mat-align-tabs="center"
+        class="mat-primary"
+      >
+        <mat-tab [label]="aboutUs">
+          <app-zmbh-about-us></app-zmbh-about-us>
+        </mat-tab>
+        <mat-tab label="A Csapat">
+          <app-zmbh-about-team></app-zmbh-about-team>
+        </mat-tab>
+        <mat-tab [label]="aboutGoal">
+          <app-zmbh-about-goal></app-zmbh-about-goal>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

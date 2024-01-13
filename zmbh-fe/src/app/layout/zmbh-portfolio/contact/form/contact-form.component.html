@@ -1,0 +1,86 @@
+<div class="container my-5 content">
+  <div class="row justify-content-center">
+    <div class="col-md-7">
+      <div class="card">
+        <div class="card-header">Kérdésed van? Írj nekünk</div>
+        <div class="card-body">
+          <form [formGroup]="form">
+            <div class="form-row">
+              <mat-form-field class="w-50 px-2">
+                <mat-label>Név</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Add meg a neved"
+                  [formControl]="contactUsFormControls.name"
+                />
+                @if (contactUsFormControls.name.hasError('required')) {
+                <mat-error
+                  >A név kitöltése <strong>kötelező</strong>!</mat-error
+                >
+                } @else if (contactUsFormControls.name.invalid &&
+                contactUsFormControls.name.touched) {
+                <mat-error
+                  >Minimum 3 karakter <strong>kötelező</strong>!</mat-error
+                >
+                }
+              </mat-form-field>
+
+              <mat-form-field class="w-50 px-2">
+                <mat-label>E-mail</mat-label>
+
+                <input
+                  matInput
+                  type="email"
+                  [formControl]="contactUsFormControls.email"
+                  [errorStateMatcher]="matcher"
+                  placeholder="Ex. john@example.com"
+                />
+                @if (contactUsFormControls.email.errors?.['invalidEmail'] &&
+                contactUsFormControls.email.value !== null &&
+                contactUsFormControls.email.value !== '' ) {
+                <mat-error>Kérlek létező e-mail címet adj meg!</mat-error>
+                } @if (contactUsFormControls.email.hasError('required')) {
+                <mat-error
+                  >Az e-mail kitöltése <strong>kötelező</strong>!</mat-error
+                >
+                }
+              </mat-form-field>
+            </div>
+            <div class="form-row">
+              <mat-form-field class="w-100 px-2">
+                <mat-label>Szöveg</mat-label>
+                <textarea
+                  style="height: 120px; resize: none"
+                  [formControl]="contactUsFormControls.message"
+                  matInput
+                ></textarea>
+                @if (contactUsFormControls.message.hasError('required')) {
+                <mat-error
+                  >A szöveg kitöltése <strong>kötelező</strong>!</mat-error
+                >
+                }@else if (contactUsFormControls.message.invalid &&
+                contactUsFormControls.message.touched) {
+                <mat-error
+                  >Minimum 3 karakter <strong>kötelező</strong>!</mat-error
+                >
+                }
+              </mat-form-field>
+            </div>
+
+            <div class="text-center">
+              <button
+                [disabled]="form.invalid"
+                (click)="sendEmail()"
+                [zmbhPostBtn]="form.invalid"
+                mat-button
+              >
+                Küldés
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
