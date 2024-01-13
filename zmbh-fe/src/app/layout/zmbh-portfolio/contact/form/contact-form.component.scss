@@ -1,93 +1,122 @@
+// @import "../../../../../styles.scss";
+
+// @media (max-width: 992px) {
+
+//     .first-row{
+//         display: none;
+//     }
+//     .content{
+//         padding: 10px;
+//     }
+
+// }
+  
+//   .input-full-width {
+//     min-width: 100px;
+//     width: 400px;
+//     padding: 5px;
+//   }
+// .first-row{
+//     display: flex;
+//     justify-content: center;
+// }
+
+// .textarea-full-width{
+//     width: 805px;
+//     padding: 5px;
+//     min-width: 100px;
+// }
+
+// .mat-mdc-card-content{
+//     min-height: 0 !important;
+//     background-color: $color2 !important;
+//     border:  1px solid $color5;
+//     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+//   }
+//   i{
+//     color:$color5;
+//   }
+
+//   .content{
+//     padding-top:12px;
+//   }
+
+// body {
+//   color: #333;
+//   line-height: 1.6;
+// }
+
+// .flex-container {
+//         display: flex;
+//         flex-direction: column;
+//         text-align: justify;
+//         padding-left: 1rem;
+//         padding-right: 1rem;
+//         padding-bottom: 0;
+//         padding-top: 12px;
+//   }
+  
+//   .contact-footer {
+//     display: grid;
+//     place-items: center;
+//     padding-top: 15px;
+// }
+
+// .mat-card {
+//   max-width: 800px; 
+//   margin: 20px auto; 
+//   background-color: $color2; 
+//   border: 1px solid $color5; 
+//   box-shadow: 0px 4px 8px rgba($color5, 0.2); 
+// }
+
+// .mat-card-content {
+//   padding: 20px; /* Belső térköz */
+// }
+
+// /* Címek stílusa */
+// .mat-card h2 {
+//   color: rgba($color5, 1); /* Cím színe */
+//   margin-top: 0;
+// }
+
+// /* Kiemelt szövegek stílusa */
+// .mat-card-content i {
+//   color: rgba($color5, 0.8); /* Kiemelt szöveg színe */
+// }
+
+// /* Lista stílusa */
+// .mat-card-content ol {
+//   padding-left: 20px; /* Lista behúzása */
+// }
+
 @import "../../../../../styles.scss";
 
-@media (max-width: 992px) {
-
-    .first-row{
-        display: none;
-    }
-    .content{
-        padding: 10px;
-    }
-
-}
-  
-  .input-full-width {
-    min-width: 100px;
-    width: 400px;
-    padding: 5px;
-  }
-.first-row{
-    display: flex;
-    justify-content: center;
-}
-
-.textarea-full-width{
-    width: 805px;
-    padding: 5px;
-    min-width: 100px;
-}
-
-.mat-mdc-card-content{
-    min-height: 0 !important;
-    background-color: $color2 !important;
-    border:  1px solid $color5;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-
-  }
-  i{
-    color:$color5;
-  }
-
-  .content{
-    padding-top:12px;
-  }
-
-body {
-  color: #333;
-  line-height: 1.6;
-}
-
-.flex-container {
-        display: flex;
-        flex-direction: column;
-        text-align: justify;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-bottom: 0;
-        padding-top: 12px;
+/* Opcionális: Bootstrap űrlap további szépítése */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .contact-footer {
-    display: grid;
-    place-items: center;
-    padding-top: 15px;
-}
+  .mat-form-field {
+    width: 100%; /* Biztosítja, hogy a mezők teljes szélességűek legyenek */
+  }
+  
 
-.mat-card {
-  max-width: 800px; 
-  margin: 20px auto; 
-  background-color: $color2; 
-  border: 1px solid $color5; 
-  box-shadow: 0px 4px 8px rgba($color5, 0.2); 
-}
+  
+  .card-header{
+    text-align: center;
+    color: $color1;
+    background-color: $color5;
+  }
+  .card-body{
+    text-align: center;
+    background-color: $color1;
 
-.mat-card-content {
-  padding: 20px; /* Belső térköz */
-}
+  }
+  .content {
+    min-height: calc(100vh - 326px);
 
-/* Címek stílusa */
-.mat-card h2 {
-  color: rgba($color5, 1); /* Cím színe */
-  margin-top: 0;
-}
+  }
 
-/* Kiemelt szövegek stílusa */
-.mat-card-content i {
-  color: rgba($color5, 0.8); /* Kiemelt szöveg színe */
-}
-
-/* Lista stílusa */
-.mat-card-content ol {
-  padding-left: 20px; /* Lista behúzása */
-}
 

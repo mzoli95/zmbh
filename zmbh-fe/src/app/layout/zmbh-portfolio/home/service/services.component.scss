@@ -1,0 +1,37 @@
+@import "../../../../../styles.scss";
+
+.content-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 3rem 0;
+}
+.primary-background-color {
+  background-color: $color2;
+}
+
+.services-card {
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: #e0edf3;
+  height: 150px;
+  box-shadow: 0 1px 0px 1px rgba(2, 37, 15, 0.19),
+    0 1px 5px 4px rgba(0, 0, 0, 0.15);
+  mat-card-header {
+    margin-bottom: 10px;
+  }
+  mat-card-title {
+    color: #003807;
+    font-family: sans-serif;
+  }
+  mat-card-content {
+    color: #003807;
+    font-family: sans-serif;
+  }
+}
+
+.text-center {
+  color: #003807;
+  padding-bottom: 20px;
+  font-weight: bold;
+}

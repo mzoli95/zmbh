@@ -4,12 +4,13 @@ import * as MzbhPortfolioActions from '../../+state/zmbh-portfolio.actions';
 
 export const CONTACT_FORM_FEATURE_KEY = 'contact-us';
 
+export interface ContactState {
+  name: string;
+  email: string;
+  message: string;
+}
 export interface ContactFormState {
-  contactForm: {
-    name: string;
-    email: string;
-    message: string;
-  };
+  contactForm: ContactState;
 }
 
 export const contactFormInitialState: ContactFormState = {

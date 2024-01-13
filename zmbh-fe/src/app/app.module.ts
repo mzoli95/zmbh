@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
-import {
-  BrowserModule,
-  provideClientHydration,
-} from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,9 +14,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { AuthService } from './authorization/auth.service';
+import { AuthInterceptor } from './authorization/auth.interceptor';
+import { AuthModule } from './authorization/auth.module';
+import { SharedModule } from './layout/shared/shared.module';
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
@@ -32,11 +33,20 @@ import { environment } from '../environments/environment';
     MatSnackBarModule,
     MatIconModule,
     HttpClientModule,
+    AuthModule,
+    SharedModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot({}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
-  providers: [provideClientHydration(), NotificationService],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,60 @@
+@import "../../../../../../styles.scss";
+.content-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5rem 0;
+}
+
+.mat-card-custom {
+  width: 100%;
+  background-color: $color3;
+}
+
+.mat-mdc-card-content {
+  padding-top: 0 !important;
+}
+.content {
+  background-color: $color2;
+  text-overflow: initial;
+}
+
+.text-content {
+  max-width: 99%;
+
+  padding-top: 18px;
+}
+
+.card-content {
+  padding-top: 18px;
+  background-color: $color3;
+}
+
+.mat-inner-content {
+  background-color: $color2;
+}
+
+.inner-tab-contents {
+  background-color: $color2;
+  padding: 4rem 2rem;
+  width: 70%;
+  margin: 0 auto;
+  font-size: 20px;
+  font-family: sans-serif;
+  color: #003807;
+  min-height: 20rem;
+}
+.mat-icon {
+  padding-top: 2px;
+}
+
+li::marker {
+  content: "";
+}
+ul {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+h2 {
+  padding-left: 10px;
+}

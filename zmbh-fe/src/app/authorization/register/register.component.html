@@ -1,0 +1,66 @@
+<div class="container my-5 content">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card">
+          <div class="card-header">
+            Felhasználó Létrehozása
+          </div>
+          <div class="card-body">
+            <form [formGroup]="form">
+                <div class="form-group">
+                    <mat-form-field  class="w-100">
+                      <mat-label>Teljes Név</mat-label>
+                      <input matInput type="text" placeholder="Add meg a teljes neved" [formControl]="controls.name">
+                      <mat-icon matSuffix>perm_identity</mat-icon>
+                    </mat-form-field>
+                  </div>
+              <div class="form-group">
+                <mat-form-field  class="w-100">
+                  <mat-label>Felhasználónév</mat-label>
+                  <input matInput type="text" placeholder="Add meg a felhasználóneved" [formControl]="controls.username">
+                  <mat-icon matSuffix>account_box</mat-icon>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field  class="w-100">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="text" placeholder="Add meg a email címed" [formControl]="controls.email">
+                  <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field class="w-100">
+                  <mat-label>Jelszó</mat-label>
+
+                  <input matInput [formControl]="controls.password"  placeholder="Add meg a jelszavad" [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+
+                    @if (controls.password.hasError('required')) {
+                        <mat-error>A szöveg kitöltése <strong>kötelező</strong>!</mat-error>
+                        }@else if (controls.password.hasError('minlength')) {
+                        <mat-error>Minimum 8 karakter <strong>kötelező</strong>!</mat-error>
+                        }@else if (controls.password.hasError('specialCharRequired') ){
+                            <mat-error>Legalább 1 speciális karakter <strong>kötelező</strong>!</mat-error>
+                        }
+
+
+                    </mat-form-field>
+              </div>
+              <div class="text-center">
+                <button
+                [disabled]="form.invalid"
+                [zmbhPostBtn]="form.invalid"
+                (click)="registerUser()"
+                mat-button
+              >
+                Regisztráció
+              </button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
