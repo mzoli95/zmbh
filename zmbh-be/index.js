@@ -16,12 +16,7 @@
 //     pass: process.env.SMTP_PASSWORD,
 //   },
 // });
-// app.use(cors());
-// app.use(
-//   cors({
-//     origin: "http://localhost:4200",
-//   })
-// );
+
 
 // const authRoute = require("./authorization/auth");
 // app.use("/api/auth", authRoute);
@@ -76,12 +71,10 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-// simple route
 app.get("/", (req, res) => {
   res.json({ message: "Response from the backend." });
 });
 
-// set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
