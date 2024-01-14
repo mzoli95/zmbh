@@ -14,22 +14,9 @@ import * as ContactFormActions from '../+state/contact.actions';
 import { updateContactFormField } from '../+state/contact.actions';
 import { mzbhEmailValidator } from '../../../shared/validator/mzbh-email.validator';
 import { ContactState } from '../+state/contact.reducer';
+import { MyErrorStateMatcher } from '../../../shared/errorStateMatcher';
 
 type ContactUsForm = Record<keyof ContactState, FormControl>;
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(
-    control: FormControl | null,
-    form: FormGroupDirective | NgForm | null
-  ): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(
-      control &&
-      control.invalid &&
-      (control.dirty || control.touched || isSubmitted)
-    );
-  }
-}
 
 @Component({
   selector: 'app-mzbh-contact-form',
@@ -41,15 +28,15 @@ export class ContactFormComponent {
   matcher = new MyErrorStateMatcher();
 
   contactUsFormControls: ContactUsForm = {
-    name: new UntypedFormControl(null, [
+    name: new FormControl(null, [
       Validators.required,
       Validators.minLength(3),
     ]),
-    email: new UntypedFormControl(null, [
+    email: new FormControl(null, [
       Validators.required,
       mzbhEmailValidator,
     ]),
-    message: new UntypedFormControl(null, [
+    message: new FormControl(null, [
       Validators.required,
       Validators.minLength(3),
     ]),

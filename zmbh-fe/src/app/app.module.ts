@@ -9,7 +9,6 @@ import { FooterComponent } from './layout/shared/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ZmbhModule } from './layout/zmbh-portfolio/zmbh.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { NotificationService } from './layout/shared/notification/notification.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { EffectsModule } from '@ngrx/effects';
@@ -20,7 +19,7 @@ import { environment } from '../environments/environment';
 import { AuthService } from './authorization/auth.service';
 import { AuthInterceptor } from './authorization/auth.interceptor';
 import { AuthModule } from './authorization/auth.module';
-import { SharedModule } from './layout/shared/shared.module';
+import { PlaygroundModule } from './layout/playground/playground.module';
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
@@ -34,7 +33,7 @@ import { SharedModule } from './layout/shared/shared.module';
     MatIconModule,
     HttpClientModule,
     AuthModule,
-    SharedModule,
+    PlaygroundModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot({}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],

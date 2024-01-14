@@ -1,0 +1,66 @@
+@import "../../../../styles.scss";
+
+
+.mat-card-custom {
+  width: 90%;
+  margin: 0 auto;
+  background-color: $color3;
+  border:  1px solid $color5;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.mat-mdc-card-content {
+padding-top: 0 !important;
+}
+
+.content {
+  min-height: calc(100vh - 215px);
+  background-color: $color2;
+  padding: 20px;
+  text-overflow: initial;
+}
+
+@media (max-width: 992px) {
+  .content {
+    min-height: calc(100vh - 285px);
+  }
+  .mat-card-custom {
+    width: 100%;
+    margin: 0 auto;
+    background-color: $color3;
+    border:  1px solid $color5;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  
+  }
+}
+
+
+// .fa {
+//   font-size: 18px;
+
+//   width: 18px;
+//   height: 18px;
+// }
+// .test {
+//   text-align: center;
+//   border: 2px solid $color1;
+//   font-weight: bold;
+//   font-style: normal;
+//   font-variant: small-caps;
+//   border-radius: 25px;
+//   font-size: 18px;
+//   color: rgb(3, 78, 58);
+//   text-shadow: 2px 2px 4px $color5;
+
+//   border: 2px solid rgb(3, 78, 58);
+
+//   text-decoration: underline;
+//   font-weight: bold;
+// }
+
+// .test:hover {
+//   color: $color3;
+//   border: 2px solid $color3;
+// }
+

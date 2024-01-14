@@ -1,0 +1,29 @@
+
+@import "../../../../../styles.scss";
+
+/* Opcionális: Bootstrap űrlap további szépítése */
+.card {
+  }
+  
+  .mat-form-field {
+    width: 100%; /* Biztosítja, hogy a mezők teljes szélességűek legyenek */
+  }
+  
+
+  
+  .card-header{
+    text-align: center;
+    color: $color1;
+    background-color: $color5;
+  }
+  .card-body{
+    text-align: center;
+    background-color: $color1;
+
+  }
+  // .content {
+  //   min-height: calc(100vh - 326px);
+
+  // }
+
+

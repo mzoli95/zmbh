@@ -1,8 +1,9 @@
 import { createAction, props } from '@ngrx/store';
+import { ContactState } from './contact.reducer';
 
 export const updateContactFormField = createAction(
   '[Contact] Update Contact Form Field',
-  props<{ value: any }>()
+  props<{ value: Partial<ContactState> }>()
 );
 
 export const submitEmail = createAction('[Contact] Submit Email');
