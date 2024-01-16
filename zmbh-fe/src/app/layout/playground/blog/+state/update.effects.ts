@@ -34,6 +34,7 @@ export class UpdatesEffects {
     )
   );
 
+  // TODO after success postUpdate, the state needs to be empty
   getUpdatesArray$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
@@ -43,9 +44,11 @@ export class UpdatesEffects {
       mergeMap((_) =>
         this.playgroundService.getUpdatesArray().pipe(
           map((data) => {
-            console.log(data);
-            const updatesFormArray = Object.values(data).map(
-              (item: any) => item.currentUpdatesForm
+            const updatesFormArray = Object.entries(data).map(
+              ([key, item]: any) => ({
+                ...item.currentUpdatesForm,
+                updateId: key,
+              })
             );
             return UpdatesActions.loadUpdateArray({ data: updatesFormArray });
           }),
