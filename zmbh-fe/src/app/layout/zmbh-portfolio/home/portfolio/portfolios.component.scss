@@ -31,3 +31,27 @@
 //   width: 100%;
 //   height: auto; /* Maintain aspect ratio */
 // }
+.mat-card-custom {
+  background-color: $color5;
+  opacity: 0.85;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 0;
+}
+
+#upper-mat {
+  position: absolute;
+  top: 10;
+  width: 100%;
+
+  /* Adjust more styling as needed */
+}
+
+#down-mat {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Adjust more styling as needed */
+}

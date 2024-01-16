@@ -4,10 +4,19 @@
       @for (picture of pictures; track picture) {
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
-          <img [src]="picture.url" [alt]="picture.alt" />
+          <img [src]="picture.imgPath" [alt]="picture.projectAlt" />
         </div>
         <div class="carousel-caption">
-          <h3>{{ picture.title }}</h3>
+          <mat-card class="mat-card-custom" id="upper-mat">
+            <mat-card-content>
+              <h2>{{ picture.projectTitle }}</h2>
+            </mat-card-content>
+          </mat-card>
+          <mat-card class="mat-card-custom" id="down-mat">
+            <mat-card-content>
+              <h3>{{ picture.projectDetail }}</h3>
+            </mat-card-content>
+          </mat-card>
           <!-- <p>{{picture.description}}</p> -->
         </div>
       </ng-template>
