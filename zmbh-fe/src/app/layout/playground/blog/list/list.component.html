@@ -1,24 +1,12 @@
-<!-- <div class="container my-5 content">
-    <div class="row ">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">Title</div>
-          <div class="card-body">
-            Content
-          </div>
-          
-        </div>
-      </div>
-      <div style="padding-top:20px" class="col-md-12">
-        <div class="card">
-          <div class="card-header">Title</div>
-          <div class="card-body">
-            Content
-          </div>
-          
-        </div>
+<div class="container my-5 content">
+  <div class="row">
+    @for (update of (updatesArray$ | async); track update) {
+    <div style="padding-top: 20px" class="col-md-12">
+      <div class="card">
+        <div class="card-header">{{ update.title }}</div>
+        <div class="card-body">{{ update.content }}</div>
       </div>
     </div>
+    }
   </div>
-   -->
-   tesr
+</div>

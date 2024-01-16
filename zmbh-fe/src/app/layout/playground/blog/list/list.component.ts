@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { SubscriptionManager } from '../../../shared/subscriptionManager';
-
+import { Observable } from 'rxjs';
+import * as UpdatesSelectors from '../+state/update.selectors';
+import { UpdatesState } from '../+state/update.reducer';
 
 @Component({
   selector: 'app-mzbh-playground-update-list',
@@ -14,15 +16,17 @@ export class UpdateListComponent extends SubscriptionManager implements OnInit {
     super();
   }
 
+  updatesArray$: Observable<UpdatesState[]> = this.store.select(
+    UpdatesSelectors.selectUpdatesArray
+  );
 
-
-  ngOnInit() {
-    this.addSubscriptions(
-        // this.form.valueChanges.subscribe((values) => {
-        //   this.store.dispatch(BlogFormActions.updateBlogFormField({ value: values }));
-        // })
-    );
+  ngOnInit(): void {
+    // this.addSubscriptions(
+    //   this.store
+    //     .select(UpdatesSelectors.selectUpdatesArray)
+    //     .subscribe((asd) => {
+    //       console.log(asd);
+    //     })
+    // );
   }
-
- 
 }

@@ -15,28 +15,28 @@ import { Observable } from 'rxjs';
   styleUrl: './form.component.scss',
 })
 export class UpdateFormComponent extends SubscriptionManager implements OnInit {
-
-  
   constructor(
     private store: Store,
     public dialogRef: MatDialogRef<UpdateFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:any,
-    ) {
-      super();
-      
-    }
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    super();
+  }
 
-    isValid$: Observable<boolean> = this.store.select(UpdatesSelectors.selectIsValid);
-    isEdit$: Observable<boolean> = this.store.select(UpdatesSelectors.selectIsEdit);
+  isValid$: Observable<boolean> = this.store.select(
+    UpdatesSelectors.selectIsValid
+  );
+  isEdit$: Observable<boolean> = this.store.select(
+    UpdatesSelectors.selectIsEdit
+  );
 
-    
   ngOnInit() {
-//     this.header = this.isEdit$ ? 'Poszt módosítása' : 'Poszt létrehozása';
+    //     this.header = this.isEdit$ ? 'Poszt módosítása' : 'Poszt létrehozása';
     // this.addSubscriptions(
     //     this.store.select(UpdatesSelectors.selectUpdatesForm).subscribe((data)=>{
     //       console.log(data);
     //       this.isEdit = data.isEdit;
-    //       this.header = 
+    //       this.header =
     //     })
     // );
   }
@@ -47,5 +47,6 @@ export class UpdateFormComponent extends SubscriptionManager implements OnInit {
 
   sendUpdatesPost() {
     this.store.dispatch(UpdatesActions.postUpdatesForm());
+    this.dialogRef.close();
   }
 }

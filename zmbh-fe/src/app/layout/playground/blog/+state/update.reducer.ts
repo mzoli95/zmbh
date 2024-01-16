@@ -3,8 +3,7 @@ import * as UpdateActions from './update.actions';
 
 export const UPDATES_FEATURE_KEY = 'updates';
 
-
-export interface CommentsState{
+export interface CommentsState {
   name: string;
   date: Date;
   commentText: string;
@@ -34,40 +33,43 @@ export const updatesFormInitialState: UpdatesFormState = {
     content: '',
     date: new Date(),
     postedBy: '',
-    title:'',
-    comments: []
+    title: '',
+    comments: [],
   },
   isFormValid: false,
-  isEdit: false
+  isEdit: false,
 };
 
 export const updatesFormReducer = createReducer(
-    updatesFormInitialState,
-  on(UpdateActions.updateUpdatesFormField, (state, {value, isValidForm}) => ({
+  updatesFormInitialState,
+  on(UpdateActions.updateUpdatesFormField, (state, { value, isValidForm }) => ({
     ...state,
     currentUpdatesForm: {
       ...state.currentUpdatesForm,
       ...value,
       date: state.currentUpdatesForm.date,
-      postedBy: state.currentUpdatesForm.postedBy
-      
+      postedBy: state.currentUpdatesForm.postedBy,
     },
-    isFormValid: isValidForm
+    isFormValid: isValidForm,
   })),
-  on(UpdateActions.isEdit, (state, {isEdit}) => ({
+  on(UpdateActions.isEdit, (state, { isEdit }) => ({
     ...state,
-    isEdit : isEdit,
-    currentUpdatesForm:{
+    isEdit: isEdit,
+    currentUpdatesForm: {
       ...state.currentUpdatesForm,
       date: new Date(Date.now()),
-      postedBy: 'ZMBH'
-    }
+      postedBy: 'ZMBH',
+    },
   })),
-  on(UpdateActions.isValid, (state, {isValid}) => ({
+  on(UpdateActions.isValid, (state, { isValid }) => ({
     ...state,
-    isFormValid : isValid
+    isFormValid: isValid,
   })),
-
+  on(UpdateActions.loadUpdateArray, (state, { data }) => {
+    console.log(data);
+    return {
+      ...state,
+      updatesFormArray: data,
+    };
+  })
 );
-
-

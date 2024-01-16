@@ -6,18 +6,21 @@ import * as UpdatesActions from '../+state/update.actions';
 import { Store } from '@ngrx/store';
 import { NotificationService } from '../../../shared/notification/notification.service';
 import { PlaygroundService } from '../../playground.service';
+import { UpdatesFormState } from './update.reducer';
 
 @Injectable()
 export class UpdatesEffects {
   submitForm$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UpdatesActions.postUpdatesForm),
-      concatLatestFrom(() => this.store.select(UpdatesSelectors.selectUpdatesForm)),
+      concatLatestFrom(() =>
+        this.store.select(UpdatesSelectors.selectUpdatesForm)
+      ),
       mergeMap(([_, data]) =>
         this.playgroundService.postUpdatesData(data).pipe(
           map((successMessage) => {
             console.log(successMessage);
-            return UpdatesActions.postUpdatesFormSuccess()
+            return UpdatesActions.postUpdatesFormSuccess();
             //     {
             //   success: successMessage,
             // });
@@ -31,36 +34,30 @@ export class UpdatesEffects {
     )
   );
 
-//   successNotification$ = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType(ContactFormActions.submitEmailSuccess),
-//       tap((success) => {
-//         const successMessage = success.success?.message;
-//         this.notificationService.openSnackBar(
-//           successMessage,
-//           NotificationType.Success
-//         );
-//       }),
-//       map(() => MzbhPortfolioActions.redirectToHome()) // Nem kell subscribe, a createEffect(()) lekezeli, viszont visszatérés nélkül végtelen ciklusba fut
-//     )
-//   );
+  getUpdatesArray$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(
+        UpdatesActions.getUpdateArray,
+        UpdatesActions.postUpdatesFormSuccess
+      ),
+      mergeMap((_) =>
+        this.playgroundService.getUpdatesArray().pipe(
+          map((data) => {
+            console.log(data);
+            const updatesFormArray = Object.values(data).map(
+              (item: any) => item.currentUpdatesForm
+            );
+            return UpdatesActions.loadUpdateArray({ data: updatesFormArray });
+          }),
 
-//   errorNotification$ = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType(ContactFormActions.submitEmailError),
-//       tap((error) => {
-//         console.log(error);
-//         const errorMessage: string =
-//           error.error?.error?.message ||
-//           `Hiba történt: ${error.error?.message}`;
-//         this.notificationService.openSnackBar(
-//           errorMessage,
-//           NotificationType.Error
-//         );
-//       }),
-//       map(() => ContactFormActions.error()) // Nem kell subscribe, a createEffect(()) lekezeli, viszont visszatérés nélkül végtelen ciklusba fut
-//     )
-//   );
+          catchError((error) => {
+            console.error('Hiba történt: ', error);
+            return of(UpdatesActions.postUpdatesFormError({ error: error }));
+          })
+        )
+      )
+    )
+  );
 
   constructor(
     private actions$: Actions,

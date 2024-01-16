@@ -39,12 +39,12 @@ import { PlaygroundModule } from './layout/playground/playground.module';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [
-    AuthService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
+    // AuthService,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptor,
+    //   multi: true,
+    // },
   ],
   bootstrap: [AppComponent],
 })
