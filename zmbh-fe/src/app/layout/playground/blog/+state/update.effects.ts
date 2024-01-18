@@ -34,7 +34,7 @@ export class UpdatesEffects {
     )
   );
 
-  // TODO after success postUpdate, the state needs to be empty
+  // TODO Do a table insted of mat cards
   getUpdatesArray$ = createEffect(() =>
     this.actions$.pipe(
       ofType(

@@ -68,7 +68,7 @@ export const updatesFormReducer = createReducer(
   on(UpdateActions.loadUpdateArray, (state, { data }) => {
     console.log(data);
     return {
-      ...state,
+      ...updatesFormInitialState,
       updatesFormArray: data,
     };
   })
