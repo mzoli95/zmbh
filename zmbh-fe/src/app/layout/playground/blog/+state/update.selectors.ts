@@ -22,7 +22,10 @@ export const selectIsValid = createSelector(
   selectUpdatesFeature,
   (state: UpdatesFormState) => state.isFormValid
 );
-
+export const selectIsLoading = createSelector(
+  selectUpdatesFeature,
+  (state: UpdatesFormState) => state.isLoading
+);
 export const selectUpdatesArray = createSelector(
   selectUpdatesFeature,
   (state: UpdatesFormState) => state.updatesFormArray || []

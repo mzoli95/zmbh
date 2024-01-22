@@ -7,7 +7,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import * as UpdatesSelectors from '../+state/update.selectors';
 import * as UpdatesActions from '../+state/update.actions';
 
-import { Observable } from 'rxjs';
+import { Observable, delay } from 'rxjs';
 
 @Component({
   selector: 'app-mzbh-playground-update-form',
@@ -29,16 +29,18 @@ export class UpdateFormComponent extends SubscriptionManager implements OnInit {
   isEdit$: Observable<boolean> = this.store.select(
     UpdatesSelectors.selectIsEdit
   );
+  isLoading$: Observable<boolean> = this.store.select(
+    UpdatesSelectors.selectIsLoading
+  );
 
   ngOnInit() {
-    //     this.header = this.isEdit$ ? 'Poszt módosítása' : 'Poszt létrehozása';
-    // this.addSubscriptions(
-    //     this.store.select(UpdatesSelectors.selectUpdatesForm).subscribe((data)=>{
-    //       console.log(data);
-    //       this.isEdit = data.isEdit;
-    //       this.header =
-    //     })
-    // );
+    this.addSubscriptions(
+      this.isLoading$.pipe(delay(3000)).subscribe((data) => {
+        if (data) {
+          this.dialogRef.close();
+        }
+      })
+    );
   }
 
   onNoClick(): void {
@@ -47,6 +49,5 @@ export class UpdateFormComponent extends SubscriptionManager implements OnInit {
 
   sendUpdatesPost() {
     this.store.dispatch(UpdatesActions.postUpdatesForm());
-    this.dialogRef.close();
   }
 }

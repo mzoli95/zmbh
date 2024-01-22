@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap, of } from 'rxjs';
+import { catchError, delay, map, mergeMap, of } from 'rxjs';
 import * as UpdatesSelectors from '../+state/update.selectors';
 import * as UpdatesActions from '../+state/update.actions';
 import { Store } from '@ngrx/store';
@@ -18,6 +18,7 @@ export class UpdatesEffects {
       ),
       mergeMap(([_, data]) =>
         this.playgroundService.postUpdatesData(data).pipe(
+          delay(3000),
           map((successMessage) => {
             console.log(successMessage);
             return UpdatesActions.postUpdatesFormSuccess();
@@ -34,12 +35,31 @@ export class UpdatesEffects {
     )
   );
 
+  deletePost$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UpdatesActions.deleteByIdFromDb),
+
+      mergeMap((data) =>
+        this.playgroundService.deletePost(data.id).pipe(
+          map(() => {
+            return UpdatesActions.deleteByIdFromDbSuccess();
+          }),
+          catchError((error) => {
+            console.error('Hiba történt: ', error);
+            return of(UpdatesActions.deleteByIdFromDbError({ error: error }));
+          })
+        )
+      )
+    )
+  );
+
   // TODO Do a table insted of mat cards
   getUpdatesArray$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
         UpdatesActions.getUpdateArray,
-        UpdatesActions.postUpdatesFormSuccess
+        UpdatesActions.postUpdatesFormSuccess,
+        UpdatesActions.deleteByIdFromDbSuccess
       ),
       mergeMap((_) =>
         this.playgroundService.getUpdatesArray().pipe(

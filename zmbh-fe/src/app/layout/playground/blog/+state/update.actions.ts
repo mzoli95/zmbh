@@ -36,3 +36,16 @@ export const loadUpdateArray = createAction(
   '[Updates] Load Update Array',
   props<{ data: any }>()
 );
+
+export const deleteByIdFromDb = createAction(
+  '[Updates] Delete By Id',
+  props<{ id: string }>()
+);
+
+export const deleteByIdFromDbSuccess = createAction(
+  '[Updates] Delete By Id Success'
+);
+export const deleteByIdFromDbError = createAction(
+  '[Updates] Delete By Id Error',
+  props<{ error: any }>()
+);

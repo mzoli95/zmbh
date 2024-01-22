@@ -1,29 +1,41 @@
-
 @import "../../../../../styles.scss";
 
 /* Opcionális: Bootstrap űrlap további szépítése */
 .card {
+}
+
+.mat-form-field {
+  width: 100%; /* Biztosítja, hogy a mezők teljes szélességűek legyenek */
+}
+
+.card-header {
+  text-align: center;
+  color: $color1;
+  background-color: $color5;
+}
+.card-body {
+  text-align: center;
+  background-color: $color1;
+}
+// .content {
+//   min-height: calc(100vh - 326px);
+
+// }
+
+.spinner-loader {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .mat-form-field {
-    width: 100%; /* Biztosítja, hogy a mezők teljes szélességűek legyenek */
+  100% {
+    transform: rotate(360deg);
   }
-  
-
-  
-  .card-header{
-    text-align: center;
-    color: $color1;
-    background-color: $color5;
-  }
-  .card-body{
-    text-align: center;
-    background-color: $color1;
-
-  }
-  // .content {
-  //   min-height: calc(100vh - 326px);
-
-  // }
-
-
+}

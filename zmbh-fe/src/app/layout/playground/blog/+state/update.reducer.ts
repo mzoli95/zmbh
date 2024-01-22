@@ -24,6 +24,7 @@ export interface UpdatesFormState {
   isFormValid: boolean;
   isEdit: boolean;
   currentUpdatesForm: UpdatesState;
+  isLoading: boolean;
 }
 
 export const updatesFormInitialState: UpdatesFormState = {
@@ -38,6 +39,7 @@ export const updatesFormInitialState: UpdatesFormState = {
   },
   isFormValid: false,
   isEdit: false,
+  isLoading: false,
 };
 
 export const updatesFormReducer = createReducer(
@@ -70,6 +72,18 @@ export const updatesFormReducer = createReducer(
     return {
       ...updatesFormInitialState,
       updatesFormArray: data,
+    };
+  }),
+  on(UpdateActions.postUpdatesFormSuccess, (state) => {
+    return {
+      ...state,
+      isLoading: false,
+    };
+  }),
+  on(UpdateActions.postUpdatesForm, (state) => {
+    return {
+      ...state,
+      isLoading: true,
     };
   })
 );

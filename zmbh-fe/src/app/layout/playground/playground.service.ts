@@ -24,6 +24,21 @@ export class PlaygroundService {
       );
   }
 
+  deletePost(id: string): Observable<any> {
+    return this.http
+      .delete(
+        `https://mzbh-api-default-rtdb.europe-west1.firebasedatabase.app/posts/${id}.json`
+      )
+      .pipe(
+        catchError((error) => {
+          console.log(error);
+          return throwError(
+            () => new Error(error.message || 'Valami hiba történt')
+          );
+        })
+      );
+  }
+
   postUpdatesData(data: UpdatesFormState): Observable<any> {
     // TODO change firebase to mysql and nodejs later
     // Firebase without authorization:

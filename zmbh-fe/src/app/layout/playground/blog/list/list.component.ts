@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 import { SubscriptionManager } from '../../../shared/subscriptionManager';
 import { Observable } from 'rxjs';
 import * as UpdatesSelectors from '../+state/update.selectors';
+import * as UpdatesActions from '../+state/update.actions';
+
 import { UpdatesState } from '../+state/update.reducer';
 
 @Component({
@@ -19,6 +21,14 @@ export class UpdateListComponent extends SubscriptionManager implements OnInit {
   updatesArray$: Observable<UpdatesState[]> = this.store.select(
     UpdatesSelectors.selectUpdatesArray
   );
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'content',
+    'posted',
+    'created',
+    'actions',
+  ];
 
   ngOnInit(): void {
     // this.addSubscriptions(
@@ -28,5 +38,9 @@ export class UpdateListComponent extends SubscriptionManager implements OnInit {
     //       console.log(asd);
     //     })
     // );
+  }
+
+  deleteById(updateId: string): void {
+    this.store.dispatch(UpdatesActions.deleteByIdFromDb({ id: updateId }));
   }
 }

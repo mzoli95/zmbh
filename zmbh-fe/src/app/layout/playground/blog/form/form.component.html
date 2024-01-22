@@ -1,23 +1,24 @@
 <div class="card">
-  <div class="card-header">{{(isEdit$ | async) ? 'Poszt módosítása' : 'Poszt létrehozása'}}</div>
-    <div class="card-body">
-      @if(!(isEdit$ | async)){
-        <app-mzbh-playground-update-create-form></app-mzbh-playground-update-create-form>
-      }@else{
-        Else edit conditional (WORKING ON IT)
-      }
+  <div class="card-header">
+    {{ (isEdit$ | async) ? "Poszt módosítása" : "Poszt létrehozása" }}
+  </div>
+  <div class="card-body">
+    @if(!(isEdit$ | async)){
+    <app-mzbh-playground-update-create-form></app-mzbh-playground-update-create-form>
+    }@else{ Else edit conditional (WORKING ON IT) }
+  </div>
+  <div class="card-footer">
+    <div class="text-center">
+      <button
+        mat-button
+        (click)="sendUpdatesPost()"
+        [disabled]="!(isValid$ | async)"
+        [zmbhPostBtn]="!(isValid$ | async)"
+        [isLoading]="(isLoading$ | async) || false"
+        mat-button
+      >
+        {{ (isEdit$ | async) ? "Módosítás" : "Létrehozás" }}
+      </button>
     </div>
-    <div class="card-footer">
-      <div class="text-center">
-        <button
-          mat-button
-          (click)="sendUpdatesPost()"
-          [disabled]="!(isValid$ | async)"
-        >
-        Létrehozás
-        </button>
-      </div>
-    </div>
+  </div>
 </div>
-
-
