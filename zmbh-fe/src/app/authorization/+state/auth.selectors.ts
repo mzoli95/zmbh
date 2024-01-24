@@ -8,3 +8,8 @@ export const selectLoginInitState = createSelector(
     selectAuthFeature,
   (state: AuthFormState) => state.auth.loginForm
 );
+
+export const selectRegisterFormState = createSelector(
+  selectAuthFeature,
+(state: AuthFormState) => state.auth.registerForm
+);

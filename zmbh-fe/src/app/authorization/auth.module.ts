@@ -16,6 +16,8 @@ import {
   authFormReducer,
 } from './+state/auth.reducer';
 import { RegisterComponent } from './register/register.component';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './+state/auth.effects';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -28,6 +30,7 @@ import { RegisterComponent } from './register/register.component';
     MatIconModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    EffectsModule.forFeature([AuthEffects]),
     StoreModule.forFeature(AUTH_FORM_FEATURE_KEY, authFormReducer, {
       initialState: authFormInitialState,
     }),
