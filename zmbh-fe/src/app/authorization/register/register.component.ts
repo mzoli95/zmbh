@@ -4,14 +4,18 @@ import { Store } from '@ngrx/store';
 import { mzbhEmailValidator } from '../../layout/shared/validator/mzbh-email.validator';
 import { mzbhSpecialCharValidator } from '../../layout/shared/validator/mzbh-special-char.validator';
 import * as AuthFormActions from '../+state/auth.actions';
+import { SubscriptionManager } from '../../layout/shared/subscriptionManager';
+
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export class RegisterComponent {
-  constructor(private store: Store) {}
+export class RegisterComponent extends SubscriptionManager {
+  constructor(private store: Store) {
+    super();
+  }
 
   hide = true;
 
@@ -24,11 +28,17 @@ export class RegisterComponent {
   form:any = new FormGroup(this.controls);
 
   ngOnInit() {
-
+    this.addSubscriptions(
+      this.form.valueChanges.subscribe((values: any) => {
+        this.store.dispatch(AuthFormActions.updateRegisterUser({ value: values }));
+      })
+  );
 
   }
 
   registerUser(){
-    this.store.dispatch(AuthFormActions.registerUser(this.form));
+    console.log("sdfg")
+    
+    this.store.dispatch(AuthFormActions.registerUser());
   }
 }

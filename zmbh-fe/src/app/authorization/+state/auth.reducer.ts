@@ -37,6 +37,14 @@ export const authFormInitialState: AuthFormState = {
 };
 export const authFormReducer = createReducer(
     authFormInitialState,
+    on(AuthActions.updateRegisterUser, (state, { value }) => ({
+      ...state,
+    auth:{
+      ...state.auth,
+      registerForm: value
+    }  
+
+    })),
   on(AuthActions.emptyLoginForm, (state) => {
     console.log("teszt")
     console.log(state)

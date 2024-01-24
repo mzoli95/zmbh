@@ -1,9 +1,13 @@
 import { Injectable } from "@angular/core";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Actions, concatLatestFrom, createEffect, ofType } from "@ngrx/effects";
 import * as AuthActions from '../+state/auth.actions';
+import * as AuthSelectors from '../+state/auth.selectors';
+
 import { catchError, map, mergeMap, of } from "rxjs";
 import { Store } from "@ngrx/store";
 import { AuthService } from "../auth.service";
+
+
 
 @Injectable()
 export class AuthEffects {
@@ -11,7 +15,10 @@ export class AuthEffects {
   submitRegisterForm$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.registerUser),
-      mergeMap((data) =>
+      concatLatestFrom(() =>
+      this.store.select(AuthSelectors.selectRegisterFormState)
+    ),
+      mergeMap(([_,data]) =>
         this.service.registerUser(data).pipe(
           map((successMessage) => {
             console.log(successMessage);

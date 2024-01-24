@@ -13,9 +13,24 @@ export const loginningUserError = createAction(
   props<{ error: any }>()
 );
 
-export const registerUser = createAction('[Auth] Register User');
+export const registerUser = createAction(
+  '[Auth] Register User',
+  props<{ value: any }>()
+);
 export const registerUserSuccess = createAction('[Auth] Register User Success');
 export const registerUserError = createAction(
   '[Auth] Register User Error',
+  props<{ error: any }>()
+);
+
+export const updateRegisterUser = createAction(
+  '[Auth] Update Register User',
+  props<{ value: any }>()
+);
+export const updateRegisterUserSuccess = createAction(
+  '[Auth] Update Register User Success'
+);
+export const updateRegisterUserError = createAction(
+  '[Auth] Update Register User Error',
   props<{ error: any }>()
 );
