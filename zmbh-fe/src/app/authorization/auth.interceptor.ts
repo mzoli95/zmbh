@@ -37,11 +37,11 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const modifiedRequest = req.clone({
-      headers: req.headers.append('Auth', 'xyz'),
-    });
+    // const modifiedRequest = req.clone({
+    //   headers: req.headers.append('Auth', 'xyz'),
+    // });
 
-    return next.handle(modifiedRequest).pipe(
+    return next.handle(req).pipe(
       tap((event) => {
         console.log(event);
         if (event.type === HttpEventType.Response) {
@@ -49,6 +49,7 @@ export class AuthInterceptor implements HttpInterceptor {
         }
       })
     );
+
 
     //   if (this.authService.getToken()) {
     //     const getToken = this.authService.getToken();

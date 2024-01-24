@@ -37,8 +37,6 @@ export class RegisterComponent extends SubscriptionManager {
   }
 
   registerUser(){
-    console.log("sdfg")
-    
     this.store.dispatch(AuthFormActions.registerUser());
   }
 }

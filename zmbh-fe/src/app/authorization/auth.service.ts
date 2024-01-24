@@ -10,6 +10,7 @@ interface AuthResponseData{
   refreshToken: string;
   expiresIn: string;
   localId: string;
+  registered?: boolean;
 }
 @Injectable({
   providedIn: 'root',
@@ -52,9 +53,6 @@ export class AuthService {
   }
 
   registerUser(data: any): Observable<any> {
-    console.log("dfgh")
-    console.log(data)
-    
         return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC1YByXCAvsLXJXqZ0TQGbefVkLiKcLpw4`, {
           email: data.email,
           password: data.password,
@@ -68,12 +66,23 @@ export class AuthService {
       })
     );
     // return this.http.post(`${environment.apiUrl}/api/register`, data).pipe(
-    //   catchError((error) => {
-    //     console.log(error);
-    //     return throwError(
-    //       () => new Error(error.message || 'Email küldési hiba')
-    //     );
-    //   })
-    // );
+   
   }
+
+
+  loginUser(data: any): Observable<any> {
+    return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC1YByXCAvsLXJXqZ0TQGbefVkLiKcLpw4`, {
+      email: data.email,
+      password: data.password,
+      returnSecureToken: true
+    }).pipe(
+  catchError((error) => {
+    console.log(error);
+    return throwError(
+      () => new Error(error.message || 'Email küldési hiba')
+    );
+  })
+);
+
+}
 }

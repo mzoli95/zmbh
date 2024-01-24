@@ -8,10 +8,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
-import * as AuthActions from '../+state/auth.actions';
+import * as AuthFormActions from '../+state/auth.actions';
 import * as AuthSelectors from '../+state/auth.selectors';
 import { LoginFormState } from '../+state/auth.reducer';
 import { delay, take } from 'rxjs';
+import { SubscriptionManager } from '../../layout/shared/subscriptionManager';
 
 type LoginForm = Record<keyof LoginFormState, FormControl>;
 @Component({
@@ -19,8 +20,10 @@ type LoginForm = Record<keyof LoginFormState, FormControl>;
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent {
-  constructor(private store: Store) {}
+export class LoginComponent extends SubscriptionManager {
+  constructor(private store: Store) {
+    super();
+  }
 
   hide = true;
 
@@ -37,5 +40,17 @@ export class LoginComponent {
       .subscribe((loginFormState: LoginFormState) => {
         this.form.patchValue(loginFormState);
       });
+
+      this.addSubscriptions(
+        this.form.valueChanges.subscribe((data)=>{
+          this.store.dispatch(AuthFormActions.updateLoginUser({ value: data }));
+
+        })
+      );
+  }
+
+  
+  loginUser(){
+    this.store.dispatch(AuthFormActions.loginUser());
   }
 }

@@ -45,6 +45,16 @@ export const authFormReducer = createReducer(
     }  
 
     })),
+    on(AuthActions.updateLoginUser, (state, { value }) => ({
+      ...state,
+    auth:{
+      ...state.auth,
+      loginForm: value
+    }  
+
+    })),
+
+    
   on(AuthActions.emptyLoginForm, (state) => {
     console.log("teszt")
     console.log(state)

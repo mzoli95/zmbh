@@ -33,6 +33,27 @@ export class AuthEffects {
   );
 
 
+
+  submitLoginForm$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(AuthActions.loginUser),
+    concatLatestFrom(() =>
+    this.store.select(AuthSelectors.selectLoginInitState)
+  ),
+    mergeMap(([_,data]) =>
+      this.service.loginUser(data).pipe(
+        map((successMessage) => {
+          console.log(successMessage);
+          return AuthActions.registerUserSuccess();
+        }),
+        catchError((error) => {
+          return of(AuthActions.registerUserError({ error: error }));
+        })
+      )
+    )
+  )
+);
+
 //   successNotification$ = createEffect(() =>
 //     this.actions$.pipe(
 //       ofType(ContactFormActions.submitEmailSuccess),
