@@ -28,7 +28,7 @@ export class LoginComponent extends SubscriptionManager {
   hide = true;
 
   loginFormControls: LoginForm = {
-    username: new FormControl(null, Validators.required),
+    email: new FormControl(null, Validators.required),
     password: new FormControl(null, Validators.required),
   };
   form = new FormGroup(this.loginFormControls);

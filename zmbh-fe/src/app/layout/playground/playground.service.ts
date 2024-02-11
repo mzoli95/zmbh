@@ -1,27 +1,44 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, catchError, exhaustMap, map, take, throwError } from 'rxjs';
 import { UpdatesFormState, UpdatesState } from './blog/+state/update.reducer';
+import { AuthService } from '../../auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlaygroundService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   getUpdatesArray(): Observable<any> {
-    return this.http
-      .get(
-        'https://mzbh-api-default-rtdb.europe-west1.firebasedatabase.app/posts.json'
-      )
-      .pipe(
-        catchError((error) => {
-          console.log(error);
-          return throwError(
-            () => new Error(error.message || 'Valami hiba történt')
-          );
-        })
+    console.log("tezt")
+  return  this.authService.user.pipe((take(1), exhaustMap((user):any=>{
+    console.log(user)
+      return this.http.get<any[]>(
+        'https://mzbh-api-default-rtdb.europe-west1.firebasedatabase.app/posts.json',
+        {
+          // params: new HttpParams().set('auth', user['token'])
+        }
+
       );
+
+    }),
+    map(data=>{
+console.log(data);
+return {
+  ...data
+}
+    }))
+    ).pipe(
+      catchError((error) => {
+        console.log(error);
+        return throwError(
+          () => new Error(error.message || 'Valami hiba történt')
+        );
+      })
+    );
+
+      
   }
 
   deletePost(id: string): Observable<any> {

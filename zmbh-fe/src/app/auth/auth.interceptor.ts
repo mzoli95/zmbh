@@ -29,7 +29,7 @@ export class AuthInterceptor implements HttpInterceptor {
   );
 
   constructor(
-    public authService: AuthService,
+    // public authService: AuthService,
     private notificationService: NotificationService
   ) {}
 

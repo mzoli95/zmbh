@@ -34,21 +34,15 @@ export class User {
   providedIn: 'root',
 })
 export class AuthService {
-  private token: string | undefined;
-  // TODO
-  private refreshTokenUrl = 'api/refresh/token';
-  // TODO
-  private logoutUrl = 'api/logout';
 
-  constructor(private http: HttpClient, private router: Router) {}
 
-  user = new Subject<User>();
+  constructor(private http: HttpClient) {}
+
+  user = new BehaviorSubject<User| null>(null);
 
   logout(): void {
     localStorage.removeItem('token');
-    this.token = '';
 
-    this.http.post(this.logoutUrl, {}).subscribe();
   }
 
   registerUser(data: any): Observable<any> {
@@ -92,6 +86,7 @@ export class AuthService {
   }
 
   loginUser(data: any): Observable<any> {
+    console.log(data)
     return this.http
       .post<AuthResponseData>(
         `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC1YByXCAvsLXJXqZ0TQGbefVkLiKcLpw4`,

@@ -4,7 +4,7 @@ import * as AuthActions from './auth.actions';
 export const AUTH_FORM_FEATURE_KEY = 'auth';
 
 export interface LoginFormState {
-  username: string;
+  email: string;
   password: string;
 }
 export interface RegisterFormState {
@@ -27,7 +27,7 @@ export interface AuthFormState {
 export const authFormInitialState: AuthFormState = {
   auth: {
     loginForm: {
-      username: '',
+      email: '',
       password: '',
     },
     registerForm: {

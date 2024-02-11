@@ -16,10 +16,11 @@ import { StoreModule } from '@ngrx/store';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { AuthService } from './authorization/auth.service';
-import { AuthInterceptor } from './authorization/auth.interceptor';
-import { AuthModule } from './authorization/auth.module';
+
 import { PlaygroundModule } from './layout/playground/playground.module';
+import { AuthModule } from './auth/auth.module';
+import { AuthService } from './auth/auth.service';
+import { AuthInterceptor } from './auth/auth.interceptor';
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [

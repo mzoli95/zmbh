@@ -13,7 +13,7 @@ export class PGUpdateComponent implements OnInit {
   constructor(public dialog: MatDialog, public store: Store) {}
 
   ngOnInit(): void {
-    this.store.dispatch(UpdatesActions.getUpdateArray());
+     this.store.dispatch(UpdatesActions.getUpdateArray());
   }
 
   newPost(): void {
