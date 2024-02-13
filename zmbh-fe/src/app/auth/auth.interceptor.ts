@@ -6,6 +6,7 @@ import {
   HttpEvent,
   HttpErrorResponse,
   HttpEventType,
+  HttpParams,
 } from '@angular/common/http';
 import {
   Observable,
@@ -16,10 +17,12 @@ import {
   filter,
   take,
   tap,
+  exhaustMap,
 } from 'rxjs';
-import { AuthService } from './auth.service';
+import { AuthService, User } from './auth.service';
 import { NotificationService } from '../layout/shared/notification/notification.service';
 import { NotificationType } from '../layout/shared/mzbh.enums';
+import { AuthFormState } from './+state/auth.reducer';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -29,7 +32,7 @@ export class AuthInterceptor implements HttpInterceptor {
   );
 
   constructor(
-    // public authService: AuthService,
+    public authService: AuthService,
     private notificationService: NotificationService
   ) {}
 
@@ -37,19 +40,28 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // const modifiedRequest = req.clone({
-    //   headers: req.headers.append('Auth', 'xyz'),
-    // });
-
-    return next.handle(req).pipe(
-      tap((event) => {
-        console.log(event);
-        if (event.type === HttpEventType.Response) {
-          console.log('Reponse arrived');
+    return this.authService.user.pipe(
+      take(1),
+      exhaustMap((user: User | null) => {
+        console.log(user);
+        if (user?.token !== null && user?.token) {
+          const modifiedReq = req.clone({
+            params: new HttpParams().set('auth', user.token),
+          });
+          return next.handle(modifiedReq);
+        } else {
+          return next.handle(req);
         }
       })
     );
-
+    // return next.handle(req).pipe(
+    //   tap((event) => {
+    //     console.log(event);
+    //     if (event.type === HttpEventType.Response) {
+    //       console.log('Reponse arrived');
+    //     }
+    //   })
+    // );
 
     //   if (this.authService.getToken()) {
     //     const getToken = this.authService.getToken();

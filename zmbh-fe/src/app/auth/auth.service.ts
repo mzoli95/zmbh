@@ -34,15 +34,14 @@ export class User {
   providedIn: 'root',
 })
 export class AuthService {
-
-
   constructor(private http: HttpClient) {}
 
-  user = new BehaviorSubject<User| null>(null);
+  user = new BehaviorSubject<User | null>(null);
 
-  logout(): void {
-    localStorage.removeItem('token');
-
+  logout() {
+    this.user.next(null);
+    //TODO navigate
+    localStorage.removeItem('userData');
   }
 
   registerUser(data: any): Observable<any> {
@@ -83,10 +82,11 @@ export class AuthService {
     const expirationDate = new Date(new Date().getTime() + +expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
     this.user.next(user);
+    localStorage.setItem('userData', JSON.stringify(user));
   }
 
   loginUser(data: any): Observable<any> {
-    console.log(data)
+    console.log(data);
     return this.http
       .post<AuthResponseData>(
         `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC1YByXCAvsLXJXqZ0TQGbefVkLiKcLpw4`,
@@ -104,6 +104,7 @@ export class AuthService {
           );
         }),
         tap((resData) => {
+          console.log(resData);
           this.handleAuthentication(
             resData.email,
             resData.localId,
@@ -112,5 +113,34 @@ export class AuthService {
           );
         })
       );
+  }
+
+  autoLogin() {
+    if (
+      typeof localStorage !== 'undefined' &&
+      localStorage.getItem('userData') !== null
+    ) {
+      const userDataString = localStorage.getItem('userData');
+      const userData: {
+        email: string;
+        id: string;
+        _token: string;
+        _tokenExpirationDate: string;
+      } = userDataString ? JSON.parse(userDataString) : null;
+      if (!userData) {
+        return;
+      }
+
+      const loadedUser = new User(
+        userData.email,
+        userData.id,
+        userData._token,
+        new Date(userData._tokenExpirationDate)
+      );
+
+      if (loadedUser.token) {
+        this.user.next(loadedUser);
+      }
+    }
   }
 }
