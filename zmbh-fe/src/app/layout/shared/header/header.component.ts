@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,8 @@ import { Component, HostListener } from '@angular/core';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  ngOnInit() {}
+  constructor(private authService: AuthService) {}
+  logout() {
+    this.authService.logout();
+  }
 }
