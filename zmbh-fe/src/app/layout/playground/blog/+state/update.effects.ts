@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
-import { catchError, delay, map, mergeMap, of } from 'rxjs';
+import { catchError, delay, finalize, map, mergeMap, of } from 'rxjs';
 import * as UpdatesSelectors from '../+state/update.selectors';
 import * as UpdatesActions from '../+state/update.actions';
 import { Store } from '@ngrx/store';
 import { NotificationService } from '../../../shared/notification/notification.service';
 import { PlaygroundService } from '../../playground.service';
-import { UpdatesFormState } from './update.reducer';
+import { LoadingService } from '../../../shared/loading.service';
 
 @Injectable()
 export class UpdatesEffects {
@@ -25,7 +25,11 @@ export class UpdatesEffects {
             //     {
             //   success: successMessage,
             // });
-          }),
+          }),finalize(
+            ()=>{
+              this.loadingService.loadingOff();
+            }
+          ),
           catchError((error) => {
             console.error('Hiba történt: ', error);
             return of(UpdatesActions.postUpdatesFormError({ error: error }));
@@ -86,6 +90,7 @@ export class UpdatesEffects {
     private actions$: Actions,
     private store: Store,
     private playgroundService: PlaygroundService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private loadingService : LoadingService
   ) {}
 }

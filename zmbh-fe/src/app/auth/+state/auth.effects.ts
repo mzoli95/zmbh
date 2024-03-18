@@ -3,7 +3,7 @@ import { Actions, concatLatestFrom, createEffect, ofType } from "@ngrx/effects";
 import * as AuthActions from '../+state/auth.actions';
 import * as AuthSelectors from '../+state/auth.selectors';
 
-import { catchError, map, mergeMap, of } from "rxjs";
+import { catchError, map, mergeMap, of, withLatestFrom } from "rxjs";
 import { Store } from "@ngrx/store";
 import { AuthService } from "../auth.service";
 
@@ -15,6 +15,7 @@ export class AuthEffects {
   submitRegisterForm$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.registerUser),
+      // withLatestFrom(selector here) // Az előző verzióját tudjuk pl lekérni
       concatLatestFrom(() =>
       this.store.select(AuthSelectors.selectRegisterFormState)
     ),
@@ -25,11 +26,11 @@ export class AuthEffects {
             return AuthActions.registerUserSuccess();
           }),
           catchError((error) => {
-            return of(AuthActions.registerUserError({ error: error }));
+            return of(AuthActions.registerUserError({ error: error })); // az of() observablera alaktítja, ha valamit nem lehetne
           })
         )
       )
-    )
+    ), {dispatch: false} // Ne adjon ki többet, ezért kell
   );
 
 

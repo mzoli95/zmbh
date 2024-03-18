@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { LoadingService } from './loading.service';
 @NgModule({
   declarations: [
     PostButtonDirective,
@@ -44,6 +45,6 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
     MatPaginatorModule,
   ],
-  providers: [NotificationService],
+  providers: [NotificationService, LoadingService],
 })
 export class SharedModule {}

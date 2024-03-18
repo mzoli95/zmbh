@@ -8,6 +8,7 @@ import * as UpdatesSelectors from '../+state/update.selectors';
 import * as UpdatesActions from '../+state/update.actions';
 
 import { Observable, delay } from 'rxjs';
+import { LoadingService } from '../../../shared/loading.service';
 
 @Component({
   selector: 'app-mzbh-playground-update-form',
@@ -18,7 +19,9 @@ export class UpdateFormComponent extends SubscriptionManager implements OnInit {
   constructor(
     private store: Store,
     public dialogRef: MatDialogRef<UpdateFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private loadingService: LoadingService
+
   ) {
     super();
   }
@@ -48,6 +51,7 @@ export class UpdateFormComponent extends SubscriptionManager implements OnInit {
   }
 
   sendUpdatesPost() {
+    this.loadingService.loadingOn();
     this.store.dispatch(UpdatesActions.postUpdatesForm());
   }
 }
