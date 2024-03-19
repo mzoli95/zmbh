@@ -21,8 +21,10 @@ import { PlaygroundModule } from './layout/playground/playground.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { LoadingService } from './layout/shared/loading.service';
+import { LoadingComponent } from './layout/shared/animations/loading/loading.component';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, LoadingComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -46,6 +48,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
       useClass: AuthInterceptor,
       multi: true,
     },
+    LoadingService
   ],
   bootstrap: [AppComponent],
 })

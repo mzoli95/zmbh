@@ -12,7 +12,7 @@ export class LoadingComponent extends SubscriptionManager implements OnInit {
 
 
   constructor(
-    private loadingService : LoadingService
+    public loadingService : LoadingService
 
   ) {
     super();

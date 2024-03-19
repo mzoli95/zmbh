@@ -6,9 +6,14 @@ export class LoadingService{
     private loadingSubject =  new BehaviorSubject<boolean>(false);
     loading$: Observable<boolean> = this.loadingSubject.asObservable();
 
-    showLoaderUnitCompleted<T>(obs$:Observable<T>): Observable<T>{
-        //todo
-        return null;
+    // showLoaderUnitCompleted<T>(obs$:Observable<T>): Observable<T>{
+    //     //todo
+    //     return null;
+    // }
+
+    ngOninit(){
+        // this.loadingSubject.next(true);
+
     }
     
     loadingOn(){

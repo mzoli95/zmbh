@@ -1,4 +1,20 @@
-<div class="spinner-container">
-    
-</div>
-<mat-spinner></mat-spinner>
+<!-- @if(loadingService.loading$ | async){
+
+    <div class="spinner-container" >
+        TRUE
+        <mat-spinner></mat-spinner>
+    </div>
+}else{
+    <div class="spinner-container" >
+        
+FALSE    </div>
+} -->
+
+@if(loadingService.loading$ | async){
+    <div class="spinner-block">
+        <mat-spinner [diameter]="150" class="mat-spinner-color"></mat-spinner>
+      </div>}
+      @else{
+ 
+
+}

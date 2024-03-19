@@ -1,15 +1,1 @@
-@import "../styles.scss";
-.spinner-block {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Teljes képernyő magasság */
-}
 
-.spinner {
-  width: 500px;
-  height: 500px;
-}
-:host ::ng-deep .mat-spinner-color circle {
-  stroke: $color5 !important;
-}
