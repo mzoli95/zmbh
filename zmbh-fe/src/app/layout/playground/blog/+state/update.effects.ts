@@ -25,11 +25,7 @@ export class UpdatesEffects {
             //     {
             //   success: successMessage,
             // });
-          }),finalize(
-            ()=>{
-              this.loadingService.loadingOff();
-            }
-          ),
+          }),
           catchError((error) => {
             console.error('Hiba történt: ', error);
             return of(UpdatesActions.postUpdatesFormError({ error: error }));
@@ -75,7 +71,10 @@ export class UpdatesEffects {
               })
             );
             return UpdatesActions.loadUpdateArray({ data: updatesFormArray });
-          }),
+          }),finalize(()=>{
+            this.loadingService.loadingOff();
+          
+        }),
 
           catchError((error) => {
             console.error('Hiba történt: ', error);

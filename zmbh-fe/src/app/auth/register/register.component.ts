@@ -5,6 +5,7 @@ import { mzbhEmailValidator } from '../../layout/shared/validator/mzbh-email.val
 import { mzbhSpecialCharValidator } from '../../layout/shared/validator/mzbh-special-char.validator';
 import * as AuthFormActions from '../+state/auth.actions';
 import { SubscriptionManager } from '../../layout/shared/subscriptionManager';
+import { LoadingService } from '../../layout/shared/loading.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { SubscriptionManager } from '../../layout/shared/subscriptionManager';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent extends SubscriptionManager {
-  constructor(private store: Store) {
+  constructor(private store: Store, private loadingService: LoadingService) {
     super();
   }
 
@@ -37,6 +38,8 @@ export class RegisterComponent extends SubscriptionManager {
   }
 
   registerUser(){
+    this.loadingService.loadingOn();
+
     this.store.dispatch(AuthFormActions.registerUser());
   }
 }

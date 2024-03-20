@@ -3,9 +3,10 @@ import { Actions, concatLatestFrom, createEffect, ofType } from "@ngrx/effects";
 import * as AuthActions from '../+state/auth.actions';
 import * as AuthSelectors from '../+state/auth.selectors';
 
-import { catchError, map, mergeMap, of, withLatestFrom } from "rxjs";
+import { catchError, finalize, map, mergeMap, of, withLatestFrom } from "rxjs";
 import { Store } from "@ngrx/store";
 import { AuthService } from "../auth.service";
+import { LoadingService } from "../../layout/shared/loading.service";
 
 
 
@@ -24,7 +25,10 @@ export class AuthEffects {
           map((successMessage) => {
             console.log(successMessage);
             return AuthActions.registerUserSuccess();
-          }),
+          }),finalize(()=>{
+            this.loadingService.loadingOff();
+          
+        }),
           catchError((error) => {
             return of(AuthActions.registerUserError({ error: error })); // az of() observablera alaktítja, ha valamit nem lehetne
           })
@@ -46,7 +50,10 @@ export class AuthEffects {
         map((successMessage) => {
           console.log(successMessage);
           return AuthActions.registerUserSuccess();
-        }),
+        }),finalize(()=>{
+          this.loadingService.loadingOff();
+        
+      }),
         catchError((error) => {
           return of(AuthActions.registerUserError({ error: error }));
         })
@@ -60,6 +67,7 @@ export class AuthEffects {
   constructor(
     private actions$: Actions,
     private store: Store,
-    private service: AuthService
+    private service: AuthService,
+    private loadingService: LoadingService
   ) {}
 }

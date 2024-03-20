@@ -13,6 +13,7 @@ import * as AuthSelectors from '../+state/auth.selectors';
 import { LoginFormState } from '../+state/auth.reducer';
 import { delay, take } from 'rxjs';
 import { SubscriptionManager } from '../../layout/shared/subscriptionManager';
+import { LoadingService } from '../../layout/shared/loading.service';
 
 type LoginForm = Record<keyof LoginFormState, FormControl>;
 @Component({
@@ -21,7 +22,7 @@ type LoginForm = Record<keyof LoginFormState, FormControl>;
   styleUrl: './login.component.scss',
 })
 export class LoginComponent extends SubscriptionManager {
-  constructor(private store: Store) {
+  constructor(private store: Store, private loadingService: LoadingService) {
     super();
   }
 
@@ -51,6 +52,7 @@ export class LoginComponent extends SubscriptionManager {
 
   
   loginUser(){
+    this.loadingService.loadingOn();
     this.store.dispatch(AuthFormActions.loginUser());
   }
 }

@@ -7,6 +7,7 @@ import * as UpdatesSelectors from '../+state/update.selectors';
 import * as UpdatesActions from '../+state/update.actions';
 
 import { UpdatesState } from '../+state/update.reducer';
+import { LoadingService } from '../../../shared/loading.service';
 
 @Component({
   selector: 'app-mzbh-playground-update-list',
@@ -14,7 +15,7 @@ import { UpdatesState } from '../+state/update.reducer';
   styleUrl: './list.component.scss',
 })
 export class UpdateListComponent extends SubscriptionManager implements OnInit {
-  constructor(private store: Store) {
+  constructor(private store: Store, private loadingService: LoadingService) {
     super();
   }
 
@@ -41,6 +42,8 @@ export class UpdateListComponent extends SubscriptionManager implements OnInit {
   }
 
   deleteById(updateId: string): void {
+    this.loadingService.loadingOn();
+
     this.store.dispatch(UpdatesActions.deleteByIdFromDb({ id: updateId }));
   }
 }
