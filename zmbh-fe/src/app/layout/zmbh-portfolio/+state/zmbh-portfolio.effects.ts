@@ -6,7 +6,7 @@ import * as MzbhPortfolioActions from './zmbh-portfolio.actions';
 
 @Injectable()
 export class ZmbhPortfolioEffects {
-  redirect$ = createEffect(
+  redirectToHome$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(MzbhPortfolioActions.redirectToHome),
@@ -14,6 +14,25 @@ export class ZmbhPortfolioEffects {
       ),
     { dispatch: false }
   );
+
+  redirectToUpdates$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(MzbhPortfolioActions.redirectToUpdates),
+        tap(() => this.router.navigate(['/updates']))
+      ),
+    { dispatch: false }
+  );
+
+  redirectToLogin$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(MzbhPortfolioActions.redirectToLogin),
+        tap(() => this.router.navigate(['/login']))
+      ),
+    { dispatch: false }
+  );
+  
 
   constructor(private actions$: Actions, private router: Router) {}
 }

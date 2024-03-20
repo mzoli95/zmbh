@@ -2,8 +2,9 @@ import { Injectable } from "@angular/core";
 import { Actions, concatLatestFrom, createEffect, ofType } from "@ngrx/effects";
 import * as AuthActions from '../+state/auth.actions';
 import * as AuthSelectors from '../+state/auth.selectors';
+import * as MzbhPortfolioActions from '../../layout/zmbh-portfolio/+state/zmbh-portfolio.actions';
 
-import { catchError, finalize, map, mergeMap, of, withLatestFrom } from "rxjs";
+import { catchError, finalize, map, mergeMap, of, tap, withLatestFrom } from "rxjs";
 import { Store } from "@ngrx/store";
 import { AuthService } from "../auth.service";
 import { LoadingService } from "../../layout/shared/loading.service";
@@ -28,6 +29,8 @@ export class AuthEffects {
           }),finalize(()=>{
             this.loadingService.loadingOff();
           
+        }),tap(()=>{
+           this.store.dispatch(MzbhPortfolioActions.redirectToLogin())
         }),
           catchError((error) => {
             return of(AuthActions.registerUserError({ error: error })); // az of() observablera alaktítja, ha valamit nem lehetne
@@ -53,6 +56,8 @@ export class AuthEffects {
         }),finalize(()=>{
           this.loadingService.loadingOff();
         
+      }),tap(()=>{
+        this.store.dispatch(MzbhPortfolioActions.redirectToUpdates())
       }),
         catchError((error) => {
           return of(AuthActions.registerUserError({ error: error }));
